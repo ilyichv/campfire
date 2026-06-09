@@ -66,6 +66,16 @@
         "typescript": "^6.0.3",
       },
     },
+    "packages/create": {
+      "name": "create-campfire",
+      "version": "0.0.1",
+      "devDependencies": {
+        "@campfire/typescript-config": "workspace:*",
+        "@types/node": "^25.9.2",
+        "tsdown": "^0.22.2",
+        "typescript": "^6.0.3",
+      },
+    },
     "packages/typescript-config": {
       "name": "@campfire/typescript-config",
       "version": "0.0.0",
@@ -337,6 +347,8 @@
     "comma-separated-tokens": ["comma-separated-tokens@2.0.3", "", {}, "sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg=="],
 
     "commander": ["commander@15.0.0", "", {}, "sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg=="],
+
+    "create-campfire": ["create-campfire@workspace:packages/create"],
 
     "cross-spawn": ["cross-spawn@7.0.6", "", { "dependencies": { "path-key": "^3.1.0", "shebang-command": "^2.0.0", "which": "^2.0.1" } }, "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="],
 
