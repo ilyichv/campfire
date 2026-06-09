@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "closing",
+  "title": "Closing Layout",
+  "description": "Centered thank-you slide.",
+  "files": [
+    {
+      "path": "items/closing.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\nexport default function ClosingLayout({\n  title,\n  children,\n}: {\n  title?: string;\n  children: ReactNode;\n}) {\n  return (\n    <main className=\"flex h-full flex-col items-center justify-center gap-8 p-28 text-center\">\n      {title ? (\n        <h1 className=\"font-bold text-8xl tracking-tight\">{title}</h1>\n      ) : null}\n      <div className=\"max-w-3xl text-2xl leading-relaxed opacity-70\">\n        {children}\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "layouts/campfire/closing.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

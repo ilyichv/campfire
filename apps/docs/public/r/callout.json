@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "callout",
+  "title": "Callout",
+  "description": "An emphasized aside with tone variants.",
+  "files": [
+    {
+      "path": "items/callout.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\nconst TONES = {\n  default: \"border-(--color-foreground)/15 bg-(--color-foreground)/[0.04]\",\n  primary: \"border-(--color-primary)/40 bg-(--color-primary)/10\",\n  warning: \"border-amber-500/40 bg-amber-500/10\",\n} as const;\n\nexport default function Callout({\n  tone = \"default\",\n  children,\n}: {\n  tone?: keyof typeof TONES;\n  children: ReactNode;\n}) {\n  return (\n    <aside\n      className={`rounded-xl border-2 px-8 py-6 text-2xl leading-relaxed ${TONES[tone]}`}\n    >\n      {children}\n    </aside>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/campfire/callout.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

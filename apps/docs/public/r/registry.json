@@ -1,0 +1,162 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "campfire",
+  "homepage": "https://campfire.dev",
+  "items": [
+    {
+      "name": "metric-card",
+      "type": "registry:component",
+      "title": "Metric Card",
+      "description": "A headline number with label and optional delta.",
+      "files": [
+        {
+          "path": "items/metric-card.tsx",
+          "type": "registry:component",
+          "target": "components/campfire/metric-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logo-cloud",
+      "type": "registry:component",
+      "title": "Logo Cloud",
+      "description": "A centered, muted row of logos.",
+      "files": [
+        {
+          "path": "items/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/campfire/logo-cloud.tsx"
+        }
+      ]
+    },
+    {
+      "name": "callout",
+      "type": "registry:component",
+      "title": "Callout",
+      "description": "An emphasized aside with tone variants.",
+      "files": [
+        {
+          "path": "items/callout.tsx",
+          "type": "registry:component",
+          "target": "components/campfire/callout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quote-card",
+      "type": "registry:component",
+      "title": "Quote Card",
+      "description": "A large quotation with attribution.",
+      "files": [
+        {
+          "path": "items/quote-card.tsx",
+          "type": "registry:component",
+          "target": "components/campfire/quote-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "step",
+      "type": "registry:component",
+      "title": "Step",
+      "description": "A numbered step with title and detail.",
+      "files": [
+        {
+          "path": "items/step.tsx",
+          "type": "registry:component",
+          "target": "components/campfire/step.tsx"
+        }
+      ]
+    },
+    {
+      "name": "title",
+      "type": "registry:block",
+      "title": "Title Layout",
+      "description": "Opening slide: oversized title with supporting copy.",
+      "files": [
+        {
+          "path": "items/title.tsx",
+          "type": "registry:file",
+          "target": "layouts/campfire/title.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section",
+      "type": "registry:block",
+      "title": "Section Layout",
+      "description": "A full-bleed divider slide on the primary color.",
+      "files": [
+        {
+          "path": "items/section.tsx",
+          "type": "registry:file",
+          "target": "layouts/campfire/section.tsx"
+        }
+      ]
+    },
+    {
+      "name": "problem-solution",
+      "type": "registry:block",
+      "title": "Problem / Solution",
+      "description": "Two-panel narrative layout with Problem and Solution components.",
+      "files": [
+        {
+          "path": "items/problem-solution.tsx",
+          "type": "registry:file",
+          "target": "layouts/campfire/problem-solution.tsx"
+        },
+        {
+          "path": "items/problem.tsx",
+          "type": "registry:component",
+          "target": "components/campfire/problem.tsx"
+        },
+        {
+          "path": "items/solution.tsx",
+          "type": "registry:component",
+          "target": "components/campfire/solution.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quote",
+      "type": "registry:block",
+      "title": "Quote Layout",
+      "description": "Center stage for a single quotation.",
+      "registryDependencies": ["https://campfire.dev/r/quote-card.json"],
+      "files": [
+        {
+          "path": "items/quote.tsx",
+          "type": "registry:file",
+          "target": "layouts/campfire/quote.tsx"
+        }
+      ]
+    },
+    {
+      "name": "traction",
+      "type": "registry:block",
+      "title": "Traction Layout",
+      "description": "Metrics row plus supporting narrative.",
+      "registryDependencies": ["https://campfire.dev/r/metric-card.json"],
+      "files": [
+        {
+          "path": "items/traction.tsx",
+          "type": "registry:file",
+          "target": "layouts/campfire/traction.tsx"
+        }
+      ]
+    },
+    {
+      "name": "closing",
+      "type": "registry:block",
+      "title": "Closing Layout",
+      "description": "Centered thank-you slide.",
+      "files": [
+        {
+          "path": "items/closing.tsx",
+          "type": "registry:file",
+          "target": "layouts/campfire/closing.tsx"
+        }
+      ]
+    }
+  ]
+}

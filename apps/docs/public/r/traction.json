@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "traction",
+  "title": "Traction Layout",
+  "description": "Metrics row plus supporting narrative.",
+  "registryDependencies": [
+    "https://campfire.dev/r/metric-card.json"
+  ],
+  "files": [
+    {
+      "path": "items/traction.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\n/** Metrics row plus supporting narrative. Pairs with MetricCard. */\nexport default function TractionLayout({\n  title,\n  children,\n}: {\n  title?: string;\n  children: ReactNode;\n}) {\n  return (\n    <main className=\"flex h-full flex-col justify-center gap-12 p-24\">\n      {title ? (\n        <h1 className=\"font-bold text-6xl tracking-tight\">{title}</h1>\n      ) : null}\n      <div className=\"flex flex-wrap items-start gap-8 text-2xl leading-relaxed [&>p]:max-w-3xl\">\n        {children}\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "layouts/campfire/traction.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

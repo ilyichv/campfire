@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "quote-card",
+  "title": "Quote Card",
+  "description": "A large quotation with attribution.",
+  "files": [
+    {
+      "path": "items/quote-card.tsx",
+      "content": "export default function QuoteCard({\n  quote,\n  author,\n  role,\n}: {\n  quote: string;\n  author: string;\n  role?: string;\n}) {\n  return (\n    <figure className=\"flex max-w-4xl flex-col gap-8\">\n      <blockquote className=\"font-medium text-5xl leading-snug tracking-tight\">\n        “{quote}”\n      </blockquote>\n      <figcaption className=\"flex items-baseline gap-3 text-xl\">\n        <span className=\"font-semibold\">{author}</span>\n        {role ? <span className=\"opacity-60\">{role}</span> : null}\n      </figcaption>\n    </figure>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/campfire/quote-card.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

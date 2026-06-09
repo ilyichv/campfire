@@ -20,7 +20,8 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "examples/*"
+    "examples/*",
+    "registry"
   ],
   "private": true,
   "engines": {

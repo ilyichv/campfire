@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-cloud",
+  "title": "Logo Cloud",
+  "description": "A centered, muted row of logos.",
+  "files": [
+    {
+      "path": "items/logo-cloud.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\nexport default function LogoCloud({\n  title,\n  children,\n}: {\n  title?: string;\n  children: ReactNode;\n}) {\n  return (\n    <section className=\"flex flex-col gap-6\">\n      {title ? (\n        <span className=\"text-center text-sm uppercase tracking-[0.2em] opacity-50\">\n          {title}\n        </span>\n      ) : null}\n      <div className=\"flex flex-wrap items-center justify-center gap-x-14 gap-y-8 opacity-70 grayscale\">\n        {children}\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/campfire/logo-cloud.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

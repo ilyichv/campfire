@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "title",
+  "title": "Title Layout",
+  "description": "Opening slide: oversized title with supporting copy.",
+  "files": [
+    {
+      "path": "items/title.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\nexport default function TitleLayout({\n  title,\n  children,\n}: {\n  title?: string;\n  children: ReactNode;\n}) {\n  return (\n    <main className=\"flex h-full flex-col justify-center gap-10 p-28\">\n      {title ? (\n        <h1 className=\"max-w-5xl font-bold text-8xl tracking-tight\">\n          {title}\n        </h1>\n      ) : null}\n      <div className=\"max-w-4xl text-3xl leading-relaxed opacity-80\">\n        {children}\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "layouts/campfire/title.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

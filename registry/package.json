@@ -1,0 +1,13 @@
+{
+  "name": "@campfire/registry",
+  "version": "0.0.1",
+  "description": "Campfire's shadcn-compatible registry items, built into the docs app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "registry:build": "shadcn build --output ../apps/docs/public/r"
+  },
+  "devDependencies": {
+    "shadcn": "^3.8.5"
+  }
+}
