@@ -1,3 +1,6 @@
+<img width="350" height="350" alt="Campfire" src="https://github.com/user-attachments/assets/69c6c526-3c72-41ef-8db7-4f2820213ad8" />
+
+
 # 🔥 Campfire
 
 **A filesystem-native presentation runtime.** Write slides in MDX, shape the
