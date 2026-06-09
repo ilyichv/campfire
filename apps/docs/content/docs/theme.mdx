@@ -1,0 +1,41 @@
+---
+title: Theme
+description: One Tailwind v4 theme, CSS-first
+---
+
+Campfire uses a single Tailwind-based theme per deck: `theme.css` at the
+project root. Tailwind v4 is configured entirely in CSS — there is no
+`tailwind.config.ts`.
+
+```css
+@import "tailwindcss";
+
+@source "./slides";
+@source "./layouts";
+@source "./components";
+
+@theme {
+  --font-sans: Inter, sans-serif;
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.15 0 0);
+  --color-primary: oklch(0.55 0.2 260);
+}
+```
+
+The `@source` directives tell Tailwind exactly which folders to scan for
+class names — deterministic regardless of where the dev server runs.
+
+## Responsibility map
+
+```txt
+theme.css            visual tokens
+components/mdx.tsx   markdown typography
+components/*         visual primitives
+layouts/*            narrative structures
+slides/*             content
+```
+
+The slide canvas uses `--color-background` / `--color-foreground` as its
+base colors, so dark decks are one token away.
+
+Multiple switchable themes are intentionally out of scope for v1.

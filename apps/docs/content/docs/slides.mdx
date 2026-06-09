@@ -1,0 +1,76 @@
+---
+title: Slides
+description: MDX files where the filename is the contract
+---
+
+Slides live in `slides/*.mdx`. **Filenames define order** — there is no `id`
+or `order` frontmatter:
+
+```txt
+slides/
+  01-title.mdx
+  02-problem.mdx
+  03-solution.mdx
+```
+
+From `slides/03-solution.mdx` Campfire derives:
+
+```ts
+{ id: "03-solution", number: 3, slug: "solution", path: "slides/03-solution.mdx" }
+```
+
+## Frontmatter
+
+Exactly three fields are supported:
+
+```mdx
+---
+layout: title
+title: Building Campfire
+notes: |
+  Mention that Campfire is filesystem-first.
+---
+
+# Building Campfire
+```
+
+- `layout` — optional. Without it the slide renders through the built-in
+  `default` layout (or your own `layouts/default.tsx` if it exists).
+- `title` — passed to the layout as a prop.
+- `notes` — speaker notes; shown in the overview, never on the slide.
+
+Any other frontmatter key is an `invalid-frontmatter` diagnostic.
+
+## The body
+
+The body is MDX: markdown plus any discovered component as JSX.
+
+```mdx
+---
+layout: traction
+title: Early Traction
+---
+
+<MetricCard value="42%" label="Activation lift" />
+
+ARR grew 18% month over month.
+```
+
+**Slides never import.** No `import`, no `export`, no module-level code. The
+dev server rejects ESM in slides at compile time and `camp validate` reports
+it as a `slide-esm` error. Components are available automatically — that is
+the point.
+
+## Reordering
+
+Renumbering by hand cascades across files, so let the CLI do it:
+
+```bash
+camp slide add agenda --title Agenda --at 2
+camp slide move solution 2
+camp slide remove agenda
+camp slide rename problem pain
+```
+
+Every mutation renumbers safely (two-phase renames, no clobbering) and
+supports `--dry-run` and `--json`.

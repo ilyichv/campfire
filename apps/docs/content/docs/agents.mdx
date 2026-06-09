@@ -1,0 +1,40 @@
+---
+title: Coding Agents
+description: AI-native without containing AI
+---
+
+Campfire does not ship AI. It is designed so coding agents can inspect,
+modify, validate, and extend a presentation safely.
+
+## Affordances
+
+```txt
+filesystem conventions      one slide per file, filename = order
+no slide imports            slides are inert content, safe to edit
+deterministic CLI           stable schemas, --json on every command
+camp inspect --json         the full project model in one call
+camp validate               machine-checkable correctness
+camp slide …                mutations with --dry-run and planned operations
+AGENTS.md                   per-repo instructions, scaffolded by create
+registry primitives         capabilities arrive as readable source
+```
+
+## The loop
+
+A typical agent session against a Campfire repo:
+
+```bash
+camp inspect --json        # understand the deck
+camp slide add traction --layout traction --at 4 --json
+# …edit slides/04-traction.mdx, components, theme.css…
+camp validate --json       # verify before finishing
+```
+
+Diagnostics are structured (`level`, `code`, `message`, `file`,
+`suggestion`), so failures explain how to fix themselves.
+
+## AGENTS.md
+
+Every scaffolded repo includes an `AGENTS.md` describing the filesystem
+contract, slide rules, layout rules, and the validation commands to run
+before finishing. Keep it up to date if you change conventions in your deck.

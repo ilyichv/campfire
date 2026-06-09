@@ -1,0 +1,69 @@
+---
+title: Layouts
+description: Narrative structures, not grids
+---
+
+Layouts are React components in `layouts/**/*.tsx`. Registry-installed
+layouts live in `layouts/campfire/`. A slide selects one by name:
+
+```yaml
+layout: problem-solution
+```
+
+resolves `layouts/problem-solution.tsx`, falling back to
+`layouts/campfire/problem-solution.tsx`. When both exist, the user file wins
+(with a `layout-collision` warning).
+
+## The contract
+
+Layouts receive a deliberately tiny prop surface:
+
+```ts
+type LayoutProps = {
+  title?: string
+  children: React.ReactNode
+}
+```
+
+```tsx
+import type { ReactNode } from "react";
+
+export default function TitleLayout({
+  title,
+  children,
+}: {
+  title?: string;
+  children: ReactNode;
+}) {
+  return (
+    <main className="flex h-full flex-col justify-center p-24">
+      {title ? <h1 className="font-bold text-7xl">{title}</h1> : null}
+      <div className="mt-8 text-2xl">{children}</div>
+    </main>
+  );
+}
+```
+
+## The canvas
+
+Slides render on a **fixed logical canvas** — 1280×720 by default — that the
+runtime scales to fit every surface: overview preview, present mode, a
+projector. Design against absolute canvas coordinates (`h-full`, `p-24`,
+`text-7xl`) and the type scale stays consistent everywhere.
+
+Change it in `campfire.config.ts`:
+
+```ts
+export default {
+  canvas: { width: 1920, height: 1080 },
+};
+```
+
+## Rules
+
+- Layouts may import anything; slides import nothing.
+- Layouts stay pure: no presentation state, no runtime hooks. Current slide,
+  progress, and navigation belong to the runtime — that keeps registry
+  layouts portable.
+- Prefer narrative names (`title`, `section`, `problem-solution`, `roadmap`,
+  `quote`, `closing`) over generic grids.

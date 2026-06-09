@@ -1,0 +1,72 @@
+---
+title: CLI
+description: camp — deterministic, agent-friendly commands
+---
+
+The CLI is a thin orchestration layer: commands delegate to `@campfire/core`,
+`@campfire/app`, and the shadcn installer. Every command accepts `--json`;
+every mutation accepts `--dry-run`. `campfire` is an alias of `camp`.
+
+## camp
+
+```bash
+camp [dir] [--port 3030] [--no-open]
+```
+
+Starts the live shell: overview, presentation mode, hot reload, diagnostics.
+Works from any subdirectory — the root is discovered by walking up to the
+nearest directory containing `slides/`.
+
+## camp validate
+
+```bash
+camp validate [--json]
+```
+
+```txt
+✓ 12 slides
+✓ 4 layouts
+✓ 8 components
+✓ No diagnostics
+```
+
+Exits non-zero when any `error`-level diagnostic exists. Diagnostics include
+`missing-layout`, `duplicate-slide-number`, `invalid-slide-filename`,
+`slide-esm`, `unknown-component`, `component-collision`, `invalid-frontmatter`,
+and `missing-theme`.
+
+## camp inspect
+
+```bash
+camp inspect --json
+```
+
+Prints the full project model — slides (with frontmatter), layouts,
+components, theme, canvas, config, and diagnostics — as stable JSON. This is
+the primary read API for coding agents.
+
+## camp add
+
+```bash
+camp add metric-card problem-solution
+```
+
+Installs shadcn-compatible registry items. Bare names resolve against the
+Campfire registry; full URLs and `.json` paths pass through untouched. Set
+`CAMPFIRE_REGISTRY_URL` to point at another registry.
+
+## camp slide
+
+File mutations with safe renumbering:
+
+```bash
+camp slide add <slug> [--title t] [--layout l] [--notes n] [--at N]
+camp slide move <slide> <position>
+camp slide remove <slide>
+camp slide rename <slide> <new-slug>
+camp slide update <slide> [--title t] [--layout l] [--notes n] [--body b] [--clear title,notes]
+```
+
+`<slide>` accepts an id (`03-solution`), a slug (`solution`), or a number
+(`3`). All mutations validate before writing, return the planned operations,
+and renumber via two-phase renames so swaps cannot collide.

@@ -1,0 +1,46 @@
+---
+title: What is Campfire?
+description: A filesystem-native presentation runtime
+---
+
+Campfire is where stories are told.
+
+It is not a slide builder, a CMS, or an AI generator — it is a **filesystem-native
+presentation runtime**. You edit files in your IDE; Campfire watches the
+repository and serves a live browser presentation shell.
+
+```txt
+filesystem + MDX slides + React layouts/components + shadcn-style registry + live preview
+```
+
+## The model
+
+| Folder / file        | Meaning                                  |
+| -------------------- | ---------------------------------------- |
+| `slides/*.mdx`       | story content — one slide per file       |
+| `layouts/`           | narrative structures (React)             |
+| `components/`        | storytelling primitives (React)          |
+| `components/mdx.tsx` | base markdown rendering                  |
+| `theme.css`          | presentation identity (Tailwind v4)      |
+| `assets/`            | images and static files                  |
+
+Registry-installed code is copied into `layouts/campfire/` and
+`components/campfire/`, shadcn-style: source in your repo, no hidden runtime
+dependencies.
+
+## One command
+
+```bash
+camp
+```
+
+`camp` discovers the project root (any directory containing `slides/`), loads
+slides, layouts, components and theme, then serves a live shell with hot
+reload, diagnostics, and a presentation mode.
+
+<Cards>
+  <Card title="Getting started" href="/docs/getting-started" />
+  <Card title="Writing slides" href="/docs/slides" />
+  <Card title="CLI reference" href="/docs/cli" />
+  <Card title="Registry" href="/docs/registry" />
+</Cards>

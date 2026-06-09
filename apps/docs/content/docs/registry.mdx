@@ -1,0 +1,70 @@
+---
+title: Registry
+description: shadcn-compatible primitives, blocks, and kits
+---
+
+Campfire distributes layouts and components through a **shadcn-compatible
+registry** — no custom format, no hidden runtime dependencies. Items are
+copied as source into your repo:
+
+```txt
+components/campfire/   registry components
+layouts/campfire/      registry layouts
+```
+
+Your own code lives outside those folders and always wins on name
+collisions.
+
+## Installing
+
+```bash
+camp add metric-card
+camp add problem-solution
+```
+
+Bare names resolve to this site: `/r/<name>.json`. Anything
+shadcn-compatible works too:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/metric-card.json
+```
+
+## Items
+
+### Primitives
+
+Small reusable components:
+
+| Item | Installs |
+| ---- | -------- |
+| `metric-card` | `components/campfire/metric-card.tsx` |
+| `logo-cloud` | `components/campfire/logo-cloud.tsx` |
+| `callout` | `components/campfire/callout.tsx` |
+| `quote-card` | `components/campfire/quote-card.tsx` |
+| `step` | `components/campfire/step.tsx` |
+
+### Blocks
+
+Narrative patterns — a layout plus its supporting components:
+
+| Item | Installs |
+| ---- | -------- |
+| `title` | `layouts/campfire/title.tsx` |
+| `section` | `layouts/campfire/section.tsx` |
+| `problem-solution` | `layouts/campfire/problem-solution.tsx` |
+| `quote` | `layouts/campfire/quote.tsx` + `quote-card` |
+| `closing` | `layouts/campfire/closing.tsx` |
+| `traction` | `layouts/campfire/traction.tsx` + `metric-card` |
+
+### Kits
+
+Starter packs that compose multiple blocks (planned, not v1).
+
+## Principles
+
+- The registry distributes **source code into your repo**.
+- Installation behavior is exactly shadcn's — `camp add` only resolves nicer
+  names.
+- Item metadata uses shadcn's schema: `files[].target` places code under
+  `layouts/campfire/` and `components/campfire/`; `registryDependencies`
+  pulls in supporting primitives.

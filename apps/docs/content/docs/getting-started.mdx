@@ -1,0 +1,64 @@
+---
+title: Getting Started
+description: Scaffold a deck and light the fire
+---
+
+## Create a project
+
+```bash
+bun create campfire my-deck
+cd my-deck
+bun install
+```
+
+This scaffolds a clean Bun + React + Tailwind v4 workspace:
+
+```txt
+my-deck/
+├── slides/
+│   └── 01-welcome.mdx
+├── layouts/
+│   └── campfire/          # registry-installed layouts land here
+├── components/
+│   ├── mdx.tsx            # base markdown rendering — yours to edit
+│   └── campfire/          # registry-installed components land here
+├── assets/
+├── theme.css              # Tailwind v4, CSS-first (no tailwind.config)
+├── campfire.config.ts     # optional: deck title, canvas size
+├── components.json        # shadcn-compatible registry config
+└── AGENTS.md              # instructions for coding agents
+```
+
+No starter layouts or blocks are installed by default — the repository starts
+clean and becomes registry-driven.
+
+## Start the shell
+
+```bash
+bun dev   # runs `camp`
+```
+
+The shell opens at `http://localhost:3030` with a deck overview. Edit any
+slide, layout, component, or `theme.css` and the browser updates.
+
+## Keyboard
+
+| Key             | Action                          |
+| --------------- | ------------------------------- |
+| `→` / `Space`   | next slide                      |
+| `←`             | previous slide                  |
+| `F` / `Enter`   | enter presentation mode         |
+| `Esc`           | back to overview                |
+
+Slides deep-link: `#/3` selects slide 3 in the overview and `#/present/3`
+presents it.
+
+## Add primitives
+
+```bash
+camp add metric-card
+camp add problem-solution
+```
+
+Registry items are copied into your repo under `components/campfire/` and
+`layouts/campfire/` — edit them like any other file.

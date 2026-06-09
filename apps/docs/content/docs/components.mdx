@@ -1,0 +1,56 @@
+---
+title: Components
+description: Storytelling primitives available to every slide
+---
+
+Components are React files in `components/**/*.tsx`. Registry-installed
+components live in `components/campfire/`.
+
+Every component is automatically available in every slide — no imports:
+
+```txt
+components/campfire/metric-card.tsx   ->   <MetricCard />
+components/revenue-chart.tsx          ->   <RevenueChart />
+```
+
+## Naming
+
+The component name is the PascalCase of the **filename**:
+
+```txt
+metric-card.tsx          -> MetricCard
+logo-cloud.tsx           -> LogoCloud
+charts/revenue-line.tsx  -> RevenueLine
+```
+
+Names form a single **flat namespace** — directories are ignored. If two
+files map to the same name, Campfire reports a `component-collision` warning
+and the user file (outside `components/campfire/`) wins.
+
+Each component file should default-export its component (a named export
+matching the component name also works).
+
+## Base markdown rendering
+
+`components/mdx.tsx` controls how plain markdown renders in slides — `h1`,
+`p`, `ul`, `blockquote`, `code`, and friends. It is scaffolded by
+`create-campfire` and it is yours to edit:
+
+```tsx
+import type { ComponentProps } from "react";
+
+export const mdxComponents = {
+  h1: (props: ComponentProps<"h1">) => (
+    <h1 className="font-bold text-7xl tracking-tight" {...props} />
+  ),
+  p: (props: ComponentProps<"p">) => (
+    <p className="text-2xl leading-relaxed" {...props} />
+  ),
+};
+```
+
+Precedence in the slide component map:
+
+```txt
+components/mdx.tsx  >  discovered components  >  defaults
+```

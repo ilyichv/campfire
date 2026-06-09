@@ -1,0 +1,14 @@
+{
+  "title": "Campfire",
+  "pages": [
+    "index",
+    "getting-started",
+    "slides",
+    "layouts",
+    "components",
+    "theme",
+    "cli",
+    "registry",
+    "agents"
+  ]
+}
