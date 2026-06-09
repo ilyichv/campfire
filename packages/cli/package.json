@@ -1,0 +1,26 @@
+{
+  "name": "@campfire/cli",
+  "version": "0.0.1",
+  "description": "Campfire command line: camp, validate, inspect, add, slide mutations",
+  "type": "module",
+  "bin": {
+    "camp": "./dist/index.mjs",
+    "campfire": "./dist/index.mjs"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsdown",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@campfire/app": "workspace:*",
+    "@campfire/core": "workspace:*",
+    "cac": "^7.0.0"
+  },
+  "devDependencies": {
+    "@campfire/typescript-config": "workspace:*",
+    "@types/node": "^25.9.2",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3"
+  }
+}

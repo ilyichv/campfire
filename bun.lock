@@ -36,6 +36,21 @@
         "typescript": "^6.0.3",
       },
     },
+    "packages/cli": {
+      "name": "@campfire/cli",
+      "version": "0.0.1",
+      "dependencies": {
+        "@campfire/app": "workspace:*",
+        "@campfire/core": "workspace:*",
+        "cac": "^7.0.0",
+      },
+      "devDependencies": {
+        "@campfire/typescript-config": "workspace:*",
+        "@types/node": "^25.9.2",
+        "tsdown": "^0.22.2",
+        "typescript": "^6.0.3",
+      },
+    },
     "packages/core": {
       "name": "@campfire/core",
       "version": "0.0.1",
@@ -86,6 +101,8 @@
     "@biomejs/cli-win32-x64": ["@biomejs/cli-win32-x64@2.4.16", "", { "os": "win32", "cpu": "x64" }, "sha512-Kp85jgoBHa05gix6UIRjfCDiUV3w/8VIdZ247VyyO2gEjaw12WEVhdIjlxp/AMzXxqxQwbxNTDVZ3Mwd2RG5rw=="],
 
     "@campfire/app": ["@campfire/app@workspace:packages/app"],
+
+    "@campfire/cli": ["@campfire/cli@workspace:packages/cli"],
 
     "@campfire/core": ["@campfire/core@workspace:packages/core"],
 

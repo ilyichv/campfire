@@ -1,0 +1,10 @@
+{
+  "extends": "@campfire/typescript-config/base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "noEmit": true
+  },
+  "include": ["src"]
+}
