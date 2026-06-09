@@ -1,0 +1,11 @@
+{
+  "extends": "@campfire/typescript-config/base.json",
+  "compilerOptions": {
+    "types": ["node", "vite/client"],
+    "jsx": "react-jsx",
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "noEmit": true
+  },
+  "include": ["src", "client"]
+}
