@@ -108,9 +108,9 @@ describe("moveSlide", () => {
     const result = moveSlide(fixture.root, "01-a", 2);
     expect(result.success).toBe(true);
     expect(slideFiles(fixture.root)).toEqual(["01-b.mdx", "02-a.mdx"]);
-    expect(
-      readFileSync(join(fixture.root, "slides/02-a.mdx"), "utf8")
-    ).toBe("A\n");
+    expect(readFileSync(join(fixture.root, "slides/02-a.mdx"), "utf8")).toBe(
+      "A\n"
+    );
   });
 });
 

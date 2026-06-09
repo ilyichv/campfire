@@ -2,7 +2,11 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
-import { baseNameWithoutExtension, parseSlideFilename, pascalCase } from "./names.js";
+import {
+  baseNameWithoutExtension,
+  parseSlideFilename,
+  pascalCase,
+} from "./names.js";
 import type {
   ComponentFile,
   Diagnostic,
@@ -87,7 +91,8 @@ export function scanSlides(root: string): {
         code: "invalid-slide-filename",
         message: `Slide filename "${entry}" does not match NN-slug.mdx.`,
         file: `slides/${entry}`,
-        suggestion: "Rename it like 01-title.mdx (number prefix defines order).",
+        suggestion:
+          "Rename it like 01-title.mdx (number prefix defines order).",
       });
       continue;
     }
@@ -143,7 +148,10 @@ export function scanLayouts(root: string): {
   const diagnostics: Diagnostic[] = [];
   const seen = new Map<string, LayoutFile>();
 
-  for (const absolutePath of walkFiles(join(root, "layouts"), [".tsx", ".jsx"])) {
+  for (const absolutePath of walkFiles(join(root, "layouts"), [
+    ".tsx",
+    ".jsx",
+  ])) {
     const path = relative(root, absolutePath);
     const layout: LayoutFile = {
       name: baseNameWithoutExtension(path),

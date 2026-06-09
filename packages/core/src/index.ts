@@ -1,22 +1,22 @@
 export { loadConfig, resolveCanvas } from "./config.js";
 export { discoverRoot } from "./discover.js";
 export {
+  type LoadProjectOptions,
   loadProject,
   ProjectNotFoundError,
-  type LoadProjectOptions,
 } from "./load-project.js";
 export { generateManifest, type ProjectManifest } from "./manifest.js";
 export { findEsmStatements, findJsxComponentNames } from "./mdx-analysis.js";
 export {
+  type AddSlideInput,
   addSlide,
+  type MutationOptions,
   moveSlide,
   removeSlide,
   renameSlide,
-  updateSlide,
-  type AddSlideInput,
-  type MutationOptions,
   type SlideMutation,
   type UpdateSlideInput,
+  updateSlide,
 } from "./mutations.js";
 export {
   isValidSlug,
@@ -30,7 +30,6 @@ export {
   scanSlides,
   scanTheme,
 } from "./scan.js";
-export { validateProject, type ValidationResult } from "./validate.js";
 export type {
   CampfireConfig,
   Canvas,
@@ -52,3 +51,4 @@ export {
   DEFAULT_LAYOUT_NAME,
   REGISTRY_NAMESPACE,
 } from "./types.js";
+export { type ValidationResult, validateProject } from "./validate.js";

@@ -1,6 +1,5 @@
 import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
-import { cac } from "cac";
 import {
   addSlide,
   discoverRoot,
@@ -12,6 +11,7 @@ import {
   updateSlide,
   validateProject,
 } from "@campfire/core";
+import { cac } from "cac";
 import { printDiagnostics, printJson, reportMutation } from "./output.js";
 
 const REGISTRY_URL =
@@ -37,18 +37,23 @@ cli
   .command("[dir]", "Start the Campfire shell")
   .option("--port <port>", "Port to listen on", { default: 3030 })
   .option("--open", "Open the browser", { default: true })
-  .action(async (dir: string | undefined, options: { port: number; open: boolean }) => {
-    const root = requireRoot(dir);
-    const { startCampfireApp } = await import("@campfire/app");
-    const server = await startCampfireApp({
-      root,
-      port: Number(options.port),
-      open: options.open,
-    });
-    const url =
-      server.resolvedUrls?.local[0] ?? `http://localhost:${options.port}/`;
-    console.log(`🔥 Campfire burning at ${url}`);
-  });
+  .action(
+    async (
+      dir: string | undefined,
+      options: { port: number; open: boolean }
+    ) => {
+      const root = requireRoot(dir);
+      const { startCampfireApp } = await import("@campfire/app");
+      const server = await startCampfireApp({
+        root,
+        port: Number(options.port),
+        open: options.open,
+      });
+      const url =
+        server.resolvedUrls?.local[0] ?? `http://localhost:${options.port}/`;
+      console.log(`🔥 Campfire burning at ${url}`);
+    }
+  );
 
 cli
   .command("validate [dir]", "Validate slides, layouts, and components")
@@ -99,7 +104,9 @@ cli
     }
     console.log("components:");
     for (const component of manifest.components) {
-      console.log(`  ${component.name} (${component.source})  ${component.path}`);
+      console.log(
+        `  ${component.name} (${component.source})  ${component.path}`
+      );
     }
     printDiagnostics(manifest.diagnostics);
   });
@@ -209,7 +216,10 @@ slideCli
   .option("--layout <layout>", "New layout")
   .option("--notes <notes>", "New speaker notes")
   .option("--body <body>", "Replace the MDX body")
-  .option("--clear <fields>", "Comma-separated fields to clear (title,layout,notes)")
+  .option(
+    "--clear <fields>",
+    "Comma-separated fields to clear (title,layout,notes)"
+  )
   .option("--dry-run", "Plan without writing")
   .option("--json", "Machine-readable output")
   .action(
@@ -252,10 +262,7 @@ slideCli.help();
 slideCli.version("0.0.1");
 
 if (process.argv[2] === "slide") {
-  slideCli.parse([
-    ...process.argv.slice(0, 2),
-    ...process.argv.slice(3),
-  ]);
+  slideCli.parse([...process.argv.slice(0, 2), ...process.argv.slice(3)]);
 } else {
   cli.parse();
 }

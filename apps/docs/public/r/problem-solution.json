@@ -12,13 +12,13 @@
     },
     {
       "path": "items/problem.tsx",
-      "content": "import type { ReactNode } from \"react\";\n\nexport default function Problem({ children }: { children: ReactNode }) {\n  return (\n    <section className=\"flex flex-col gap-4 rounded-2xl border-2 border-(--color-foreground)/15 p-10\">\n      <span className=\"font-semibold text-(--color-foreground)/50 text-sm uppercase tracking-[0.2em]\">\n        Problem\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
+      "content": "import type { ReactNode } from \"react\";\n\nexport default function Problem({ children }: { children: ReactNode }) {\n  return (\n    <section className=\"flex flex-col gap-4 rounded-2xl border-(--color-foreground)/15 border-2 p-10\">\n      <span className=\"font-semibold text-(--color-foreground)/50 text-sm uppercase tracking-[0.2em]\">\n        Problem\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/campfire/problem.tsx"
     },
     {
       "path": "items/solution.tsx",
-      "content": "import type { ReactNode } from \"react\";\n\nexport default function Solution({ children }: { children: ReactNode }) {\n  return (\n    <section className=\"flex flex-col gap-4 rounded-2xl border-2 border-(--color-primary)/50 bg-(--color-primary)/5 p-10\">\n      <span className=\"font-semibold text-(--color-primary) text-sm uppercase tracking-[0.2em]\">\n        Solution\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
+      "content": "import type { ReactNode } from \"react\";\n\nexport default function Solution({ children }: { children: ReactNode }) {\n  return (\n    <section className=\"flex flex-col gap-4 rounded-2xl border-(--color-primary)/50 border-2 bg-(--color-primary)/5 p-10\">\n      <span className=\"font-semibold text-(--color-primary) text-sm uppercase tracking-[0.2em]\">\n        Solution\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/campfire/solution.tsx"
     }

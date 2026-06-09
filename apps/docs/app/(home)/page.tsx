@@ -8,8 +8,8 @@ export default function HomePage() {
       </span>
       <h1 className="font-bold text-4xl tracking-tight">Campfire</h1>
       <p className="max-w-xl text-fd-muted-foreground text-lg">
-        A filesystem-native presentation runtime. Write slides in MDX, shape
-        the story with React layouts, and present from a live local shell.
+        A filesystem-native presentation runtime. Write slides in MDX, shape the
+        story with React layouts, and present from a live local shell.
       </p>
       <pre className="rounded-lg border bg-fd-secondary px-6 py-3 text-left text-sm">
         bun create campfire my-deck

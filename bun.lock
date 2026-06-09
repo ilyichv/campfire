@@ -37,6 +37,19 @@
         "typescript": "^6.0.3",
       },
     },
+    "examples/basic": {
+      "name": "example-basic",
+      "dependencies": {
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
+      },
+      "devDependencies": {
+        "@campfire/cli": "workspace:*",
+        "@types/react": "^19.2.17",
+        "@types/react-dom": "^19.2.3",
+        "typescript": "^6.0.3",
+      },
+    },
     "packages/app": {
       "name": "@campfire/app",
       "version": "0.0.1",
@@ -64,6 +77,10 @@
     "packages/cli": {
       "name": "@campfire/cli",
       "version": "0.0.1",
+      "bin": {
+        "camp": "./dist/index.mjs",
+        "campfire": "./dist/index.mjs",
+      },
       "dependencies": {
         "@campfire/app": "workspace:*",
         "@campfire/core": "workspace:*",
@@ -891,6 +908,8 @@
     "eventsource": ["eventsource@3.0.7", "", { "dependencies": { "eventsource-parser": "^3.0.1" } }, "sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA=="],
 
     "eventsource-parser": ["eventsource-parser@3.1.0", "", {}, "sha512-kJezFj9YFAMLeORyi7aCLxLbD5/qWMQnoMVlVPyHIll7lgRJCc3JVln9Vgl9nwQi0YkMnhdGTMNn7CkRRAptMg=="],
+
+    "example-basic": ["example-basic@workspace:examples/basic"],
 
     "execa": ["execa@9.6.1", "", { "dependencies": { "@sindresorhus/merge-streams": "^4.0.0", "cross-spawn": "^7.0.6", "figures": "^6.1.0", "get-stream": "^9.0.0", "human-signals": "^8.0.1", "is-plain-obj": "^4.1.0", "is-stream": "^4.0.1", "npm-run-path": "^6.0.0", "pretty-ms": "^9.2.0", "signal-exit": "^4.1.0", "strip-final-newline": "^4.0.0", "yoctocolors": "^2.1.1" } }, "sha512-9Be3ZoN4LmYR90tUoVu2te2BsbzHfhJyfEiAVfz7N5/zv+jduIfLrV2xdQXOHbaD6KgpGdO9PRPM1Y4Q9QkPkA=="],
 

@@ -8,10 +8,10 @@ import {
   FIRST_SLIDE,
   GITIGNORE,
   MDX_COMPONENTS,
-  THEME_CSS,
-  TSCONFIG,
   packageJson,
   readme,
+  THEME_CSS,
+  TSCONFIG,
 } from "./templates.js";
 
 const directoryArg = process.argv[2];

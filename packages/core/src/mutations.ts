@@ -1,7 +1,7 @@
 import { existsSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
-import { isValidSlug, slideFilename } from "./names.js";
+import { isValidSlug, padSlideNumber, slideFilename } from "./names.js";
 import { scanSlides } from "./scan.js";
 import type {
   Diagnostic,
@@ -31,6 +31,12 @@ function failure(diagnostic: Diagnostic): Result<SlideMutation> {
   return { success: false, diagnostics: [diagnostic] };
 }
 
+const NUMBER_REFERENCE_PATTERN = /^\d+$/;
+
+function slideId(number: number, slug: string): string {
+  return `${padSlideNumber(number)}-${slug}`;
+}
+
 /** Find a slide by id ("03-solution"), slug ("solution"), or number ("3"). */
 function resolveSlide(
   slides: SlideFile[],
@@ -39,10 +45,8 @@ function resolveSlide(
   return (
     slides.find((slide) => slide.id === reference) ??
     slides.find((slide) => slide.slug === reference) ??
-    (/^\d+$/.test(reference)
-      ? slides.find(
-          (slide) => slide.number === Number.parseInt(reference, 10)
-        )
+    (NUMBER_REFERENCE_PATTERN.test(reference)
+      ? slides.find((slide) => slide.number === Number.parseInt(reference, 10))
       : undefined)
   );
 }
@@ -79,9 +83,7 @@ function applyOperations(root: string, operations: FileOperation[]): void {
       rmSync(join(root, operation.path));
     }
   }
-  const renames = operations.filter(
-    (operation) => operation.kind === "rename"
-  );
+  const renames = operations.filter((operation) => operation.kind === "rename");
   for (const rename of renames) {
     renameSync(join(root, rename.path), join(root, rename.path + TMP_SUFFIX));
   }
@@ -142,7 +144,10 @@ export function addSlide(
   const { slides } = scanSlides(root);
   if (slides.some((slide) => slide.slug === input.slug)) {
     return failure(
-      error("duplicate-slug", `A slide with slug "${input.slug}" already exists.`)
+      error(
+        "duplicate-slug",
+        `A slide with slug "${input.slug}" already exists.`
+      )
     );
   }
   const position = input.at ?? slides.length + 1;
@@ -173,7 +178,10 @@ export function addSlide(
 
   return runMutation(
     root,
-    { id: `${slideFilename(position, input.slug).replace(/\.mdx$/, "")}`, path },
+    {
+      id: slideId(position, input.slug),
+      path,
+    },
     operations,
     options
   );
@@ -196,7 +204,12 @@ export function removeSlide(
     { kind: "delete", path: slide.path },
     ...planRenumber(remaining),
   ];
-  return runMutation(root, { id: slide.id, path: slide.path }, operations, options);
+  return runMutation(
+    root,
+    { id: slide.id, path: slide.path },
+    operations,
+    options
+  );
 }
 
 export function moveSlide(
@@ -214,7 +227,10 @@ export function moveSlide(
   }
   if (to < 1 || to > slides.length) {
     return failure(
-      error("invalid-position", `Position ${to} is out of range 1..${slides.length}.`)
+      error(
+        "invalid-position",
+        `Position ${to} is out of range 1..${slides.length}.`
+      )
     );
   }
   const reordered = slides.filter((entry) => entry.id !== slide.id);
@@ -223,7 +239,7 @@ export function moveSlide(
   const path = `slides/${slideFilename(to, slide.slug)}`;
   return runMutation(
     root,
-    { id: path.replace(/^slides\//, "").replace(/\.mdx$/, ""), path },
+    { id: slideId(to, slide.slug), path },
     operations,
     options
   );
@@ -256,7 +272,7 @@ export function renameSlide(
   ];
   return runMutation(
     root,
-    { id: path.replace(/^slides\//, "").replace(/\.mdx$/, ""), path },
+    { id: slideId(slide.number, newSlug), path },
     operations,
     options
   );
@@ -286,7 +302,7 @@ export function updateSlide(
   const merge = (
     next: string | null | undefined,
     current: string | undefined
-  ): string | undefined => (next === undefined ? current : next ?? undefined);
+  ): string | undefined => (next === undefined ? current : (next ?? undefined));
 
   const frontmatter: SlideFrontmatter = {
     layout: merge(input.layout, slide.frontmatter.layout),
@@ -300,7 +316,12 @@ export function updateSlide(
       content: serializeSlide(frontmatter, input.body ?? slide.body),
     },
   ];
-  return runMutation(root, { id: slide.id, path: slide.path }, operations, options);
+  return runMutation(
+    root,
+    { id: slide.id, path: slide.path },
+    operations,
+    options
+  );
 }
 
 export function slideExists(root: string, reference: string): boolean {

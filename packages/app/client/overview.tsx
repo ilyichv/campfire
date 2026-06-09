@@ -1,6 +1,6 @@
-import type { Diagnostic } from "@campfire/core";
 import manifest from "virtual:campfire/project";
 import { slides } from "virtual:campfire/slides";
+import type { Diagnostic } from "@campfire/core";
 import { navigate } from "./route.js";
 import { SlideCanvas } from "./slide-canvas.js";
 import { SlideView } from "./slide-view.js";
@@ -11,10 +11,10 @@ function DiagnosticsPanel({ diagnostics }: { diagnostics: Diagnostic[] }) {
   }
   return (
     <section className="cf-diagnostics">
-      {diagnostics.map((diagnostic, index) => (
+      {diagnostics.map((diagnostic) => (
         <div
           className={`cf-diagnostic cf-diagnostic-${diagnostic.level}`}
-          key={`${diagnostic.code}-${index}`}
+          key={`${diagnostic.code}:${diagnostic.file ?? ""}:${diagnostic.message}`}
         >
           <span className="cf-diagnostic-level">{diagnostic.level}</span>
           <span className="cf-diagnostic-code">{diagnostic.code}</span>
@@ -48,7 +48,7 @@ export function Overview({
         <nav className="cf-slide-list">
           {slides.map((slide, slideIndex) => (
             <button
-              className={`cf-slide-item${slideIndex === index ? " cf-active" : ""}`}
+              className={`cf-slide-item${slideIndex === index ? "cf-active" : ""}`}
               key={slide.id}
               onClick={() => navigate({ mode: "overview", index: slideIndex })}
               type="button"
@@ -56,7 +56,9 @@ export function Overview({
               <span className="cf-slide-number">
                 {String(slide.number).padStart(2, "0")}
               </span>
-              <span className="cf-slide-title">{slide.title ?? slide.slug}</span>
+              <span className="cf-slide-title">
+                {slide.title ?? slide.slug}
+              </span>
             </button>
           ))}
         </nav>
@@ -66,7 +68,11 @@ export function Overview({
       </aside>
       <main className="cf-preview">
         <div className="cf-preview-stage">
-          {active ? <SlideCanvas><SlideView slide={active} /></SlideCanvas> : null}
+          {active ? (
+            <SlideCanvas>
+              <SlideView slide={active} />
+            </SlideCanvas>
+          ) : null}
         </div>
         {active?.notes ? (
           <section className="cf-notes">

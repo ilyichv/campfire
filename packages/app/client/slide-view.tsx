@@ -1,8 +1,8 @@
-import { Component, type ReactNode } from "react";
 import { components } from "virtual:campfire/components";
 import { layouts } from "virtual:campfire/layouts";
 import { mdxComponents } from "virtual:campfire/mdx-components";
 import type { SlideEntry } from "virtual:campfire/slides";
+import { Component, type ReactNode } from "react";
 
 /** User overrides in components/mdx.tsx win over discovered components. */
 const slideComponents = { ...components, ...mdxComponents };
@@ -39,7 +39,9 @@ export function SlideView({ slide }: { slide: SlideEntry }) {
     return (
       <div className="cf-slide-error">
         <h2>Missing layout "{layoutName}"</h2>
-        <pre>Create layouts/{layoutName}.tsx or run: camp add {layoutName}</pre>
+        <pre>
+          Create layouts/{layoutName}.tsx or run: camp add {layoutName}
+        </pre>
       </div>
     );
   }

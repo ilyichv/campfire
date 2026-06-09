@@ -9,7 +9,10 @@
       "default": "./dist/index.mjs"
     }
   },
-  "files": ["dist", "client"],
+  "files": [
+    "dist",
+    "client"
+  ],
   "scripts": {
     "build": "tsdown",
     "check-types": "tsc --noEmit"

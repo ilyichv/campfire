@@ -1,4 +1,6 @@
 const SLIDE_FILENAME_PATTERN = /^(\d+)-([a-z0-9][a-z0-9-]*)\.mdx$/;
+const SLUG_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
+const EXTENSION_PATTERN = /\.[^.]+$/;
 
 export type ParsedSlideFilename = {
   number: number;
@@ -33,7 +35,7 @@ export function padSlideNumber(number: number): string {
 }
 
 export function isValidSlug(slug: string): boolean {
-  return /^[a-z0-9][a-z0-9-]*$/.test(slug);
+  return SLUG_PATTERN.test(slug);
 }
 
 /** `metric-card` -> `MetricCard`. The directory part of a path is ignored:
@@ -48,5 +50,5 @@ export function pascalCase(kebab: string): string {
 
 export function baseNameWithoutExtension(filePath: string): string {
   const file = filePath.split("/").at(-1) ?? filePath;
-  return file.replace(/\.[^.]+$/, "");
+  return file.replace(EXTENSION_PATTERN, "");
 }

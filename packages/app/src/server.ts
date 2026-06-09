@@ -1,8 +1,8 @@
 import { existsSync, realpathSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
 import { createServer, searchForWorkspaceRoot, type ViteDevServer } from "vite";
 import { campfirePlugin } from "./plugin.js";
 

@@ -4,8 +4,11 @@ export type Route =
   | { mode: "overview"; index: number }
   | { mode: "present"; index: number };
 
+const PRESENT_HASH_PATTERN = /^#\/present(?:\/(\d+))?$/;
+const OVERVIEW_HASH_PATTERN = /^#\/(\d+)$/;
+
 export function parseRoute(hash: string, slideCount: number): Route {
-  const present = /^#\/present(?:\/(\d+))?$/.exec(hash);
+  const present = PRESENT_HASH_PATTERN.exec(hash);
   const clamp = (value: number) =>
     Math.min(Math.max(value, 0), Math.max(slideCount - 1, 0));
   if (present) {
@@ -14,7 +17,7 @@ export function parseRoute(hash: string, slideCount: number): Route {
       index: clamp(present[1] ? Number.parseInt(present[1], 10) - 1 : 0),
     };
   }
-  const overview = /^#\/(\d+)$/.exec(hash);
+  const overview = OVERVIEW_HASH_PATTERN.exec(hash);
   return {
     mode: "overview",
     index: clamp(overview?.[1] ? Number.parseInt(overview[1], 10) - 1 : 0),

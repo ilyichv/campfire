@@ -1,12 +1,12 @@
-import { fileURLToPath } from "node:url";
 import { join, relative } from "node:path";
-import mdx from "@mdx-js/rollup";
+import { fileURLToPath } from "node:url";
 import {
   DEFAULT_LAYOUT_NAME,
   generateManifest,
   loadProject,
   type PresentationProject,
 } from "@campfire/core";
+import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import type { Plugin, ViteDevServer } from "vite";
@@ -22,6 +22,9 @@ const MODULE_IDS = [
   "mdx-components",
 ] as const;
 
+const OPENING_BRACE_PATTERN = /^\{/;
+const MDX_FILE_PATTERN = /\.mdx$/;
+
 type CampfirePluginOptions = {
   /** Absolute path of the presentation project root. */
   root: string;
@@ -30,10 +33,7 @@ type CampfirePluginOptions = {
 /** Top-level ESM is forbidden in slides; this is the authoritative
  * enforcement of the "slides never import" contract. */
 function remarkForbidEsm() {
-  return (
-    tree: { children?: { type: string }[] },
-    file: { path?: string }
-  ) => {
+  return (tree: { children?: { type: string }[] }, file: { path?: string }) => {
     if (tree.children?.some((node) => node.type === "mdxjsEsm")) {
       throw new Error(
         `Slides never import or export${
@@ -69,7 +69,7 @@ function moduleCode(project: PresentationProject, id: string): string {
             layout: slide.frontmatter.layout,
             title: slide.frontmatter.title,
             notes: slide.frontmatter.notes,
-          }).replace(/^\{/, `{ Component: slide_${index}, `)
+          }).replace(OPENING_BRACE_PATTERN, `{ Component: slide_${index}, `)
         )
         .join(",\n  ");
       return `${imports}\nexport const slides = [\n  ${entries}\n];`;
@@ -85,13 +85,17 @@ function moduleCode(project: PresentationProject, id: string): string {
         )
         .join("\n");
       const entries = project.layouts
-        .map((layout, index) => `${JSON.stringify(layout.name)}: layout_${index}`)
+        .map(
+          (layout, index) => `${JSON.stringify(layout.name)}: layout_${index}`
+        )
         .join(",\n  ");
       const builtin = userDefault
         ? ""
         : `import builtinDefault from ${JSON.stringify(clientFile("default-layout.tsx"))};\n`;
       return `${builtin}${imports}\nexport const layouts = {\n  ${
-        userDefault ? "" : `${JSON.stringify(DEFAULT_LAYOUT_NAME)}: builtinDefault,\n  `
+        userDefault
+          ? ""
+          : `${JSON.stringify(DEFAULT_LAYOUT_NAME)}: builtinDefault,\n  `
       }${entries}\n};`;
     }
     case "components": {
@@ -172,7 +176,11 @@ export function campfirePlugin(options: CampfirePluginOptions): Plugin[] {
       let timer: ReturnType<typeof setTimeout> | undefined;
       const scheduleReload = () => {
         clearTimeout(timer);
-        timer = setTimeout(() => void reload(server), 50);
+        timer = setTimeout(() => {
+          reload(server).catch((error) => {
+            server.config.logger.error(`[campfire] reload failed: ${error}`);
+          });
+        }, 50);
       };
 
       const isProjectFile = (file: string) => {
@@ -211,7 +219,7 @@ export function campfirePlugin(options: CampfirePluginOptions): Plugin[] {
   };
 
   const mdxPlugin = mdx({
-    include: /\.mdx$/,
+    include: MDX_FILE_PATTERN,
     jsxImportSource: "react",
     development: true,
     remarkPlugins: [remarkFrontmatter, remarkGfm, remarkForbidEsm],

@@ -60,9 +60,9 @@ describe("loadProject", () => {
       "problem-solution",
       "title",
     ]);
-    expect(project.layouts.find((l) => l.name === "problem-solution")?.source).toBe(
-      "registry"
-    );
+    expect(
+      project.layouts.find((l) => l.name === "problem-solution")?.source
+    ).toBe("registry");
     expect(project.components).toHaveLength(1);
     expect(project.components[0]?.name).toBe("MetricCard");
     expect(project.mdxComponents?.path).toBe("components/mdx.tsx");
@@ -108,7 +108,9 @@ describe("loadProject", () => {
     });
     const project = await loadProject({ root: fixture.root });
     expect(
-      project.diagnostics.filter((diagnostic) => diagnostic.code === "slide-esm")
+      project.diagnostics.filter(
+        (diagnostic) => diagnostic.code === "slide-esm"
+      )
     ).toEqual([]);
   });
 

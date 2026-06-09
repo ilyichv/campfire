@@ -1,159 +1,60 @@
-# Turborepo starter
+# 🔥 Campfire
 
-This Turborepo starter is maintained by the Turborepo core team.
+**A filesystem-native presentation runtime.** Write slides in MDX, shape the
+story with React layouts, and present from a live local shell.
 
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
+```bash
+bun create campfire my-deck
+cd my-deck && bun install
+bun dev          # camp — live shell at http://localhost:3030
 ```
 
-## What's inside?
+Campfire is not a slide builder, a CMS, or an AI generator. It watches a
+presentation repository — slides, layouts, components, theme — and serves a
+live browser shell with hot reload, diagnostics, and a presentation mode.
+Slides render on a fixed logical canvas (1280×720 by default) scaled to fit
+every surface.
 
-This Turborepo includes the following packages/apps:
+## Monorepo
 
-### Apps and Packages
+| Path | Package | What it is |
+| ---- | ------- | ---------- |
+| `packages/core` | `@campfire/core` | Project engine: discovery, scanning, validation, diagnostics, slide mutations |
+| `packages/app` | `@campfire/app` | Browser shell + Vite runtime: virtual modules, MDX pipeline, canvas, HMR |
+| `packages/cli` | `@campfire/cli` | `camp` / `campfire` bins: shell, validate, inspect, add, `slide` mutations |
+| `packages/create` | `create-campfire` | `bun create campfire` scaffolder |
+| `registry/` | `@campfire/registry` | shadcn-compatible registry items (built into the docs app) |
+| `apps/docs` | `docs` | Fumadocs site: documentation + registry at `/r/<item>.json` |
+| `examples/basic` | — | A Campfire deck built with registry items |
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Development
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo build
+```bash
+bun install
+bun run build          # turbo: all packages + docs
+bun run test           # bun test (core)
+bun run check-types    # tsc everywhere
+bun run check          # ultracite/biome
+bun run registry:build # rebuild registry JSON into apps/docs/public/r
 ```
 
-Without global `turbo`, use your package manager:
+Try the example deck:
 
-```sh
-cd my-turborepo
-npx turbo build
-bun dlx turbo build
-bun exec turbo build
+```bash
+cd examples/basic
+./node_modules/.bin/camp --no-open
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+## Conventions
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo build --filter=docs
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo build --filter=docs
-bun exec turbo build --filter=docs
-bun exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo dev
-bun exec turbo dev
-bun exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-bun exec turbo dev --filter=web
-bun exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-bun exec turbo login
-bun exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-bun exec turbo link
-bun exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+- Slide filenames define order: `01-title.mdx`, `02-problem.mdx`. The
+  filename is the contract.
+- Slide frontmatter supports exactly `layout`, `title`, `notes` — `layout`
+  is optional and falls back to the built-in `default` layout.
+- **Slides never import.** The MDX pipeline rejects ESM in slides;
+  `camp validate` reports it as `slide-esm`.
+- Registry code installs into `layouts/campfire/` and `components/campfire/`;
+  user code outside those namespaces wins collisions.
+- Tailwind v4, CSS-first: a single `theme.css`, no `tailwind.config`.
+- Everything builds with rolldown (`tsdown` for packages, Vite 8 for the
+  runtime).

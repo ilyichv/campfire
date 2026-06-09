@@ -38,7 +38,8 @@ layout: problem-solution
 <MetricCard value="42%" label="Activation" />
 `,
   "slides/03-solution.mdx": "Plain content, default layout.\n",
-  "layouts/title.tsx": "export default function TitleLayout() { return null }\n",
+  "layouts/title.tsx":
+    "export default function TitleLayout() { return null }\n",
   "layouts/campfire/problem-solution.tsx":
     "export default function ProblemSolution() { return null }\n",
   "components/mdx.tsx": "export const mdxComponents = {}\n",

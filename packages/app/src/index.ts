@@ -1,5 +1,5 @@
 export { campfirePlugin } from "./plugin.js";
 export {
-  startCampfireApp,
   type StartCampfireAppOptions,
+  startCampfireApp,
 } from "./server.js";

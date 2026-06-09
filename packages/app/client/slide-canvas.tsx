@@ -1,10 +1,5 @@
-import {
-  type ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
 import manifest from "virtual:campfire/project";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 /**
  * Slides render on a fixed logical canvas (manifest.canvas, default 1280x720)
