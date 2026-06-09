@@ -13,8 +13,8 @@ export type ProjectManifest = {
     title?: string;
     notes?: string;
   }[];
-  layouts: { name: string; path: string; source: string }[];
-  components: { name: string; path: string; source: string }[];
+  layouts: { name: string; path: string }[];
+  components: { name: string; path: string }[];
   mdxComponents?: string;
   theme?: string;
   diagnostics: PresentationProject["diagnostics"];
@@ -38,16 +38,8 @@ export function generateManifest(
       title: slide.frontmatter.title,
       notes: slide.frontmatter.notes,
     })),
-    layouts: project.layouts.map(({ name, path, source }) => ({
-      name,
-      path,
-      source,
-    })),
-    components: project.components.map(({ name, path, source }) => ({
-      name,
-      path,
-      source,
-    })),
+    layouts: project.layouts.map(({ name, path }) => ({ name, path })),
+    components: project.components.map(({ name, path }) => ({ name, path })),
     mdxComponents: project.mdxComponents?.path,
     theme: project.theme?.path,
     diagnostics: project.diagnostics,

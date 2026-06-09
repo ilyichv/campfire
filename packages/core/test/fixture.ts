@@ -40,10 +40,10 @@ layout: problem-solution
   "slides/03-solution.mdx": "Plain content, default layout.\n",
   "layouts/title.tsx":
     "export default function TitleLayout() { return null }\n",
-  "layouts/campfire/problem-solution.tsx":
+  "layouts/nested/problem-solution.tsx":
     "export default function ProblemSolution() { return null }\n",
   "components/mdx.tsx": "export const mdxComponents = {}\n",
-  "components/campfire/metric-card.tsx":
+  "components/nested/metric-card.tsx":
     "export default function MetricCard() { return null }\n",
   "theme.css": '@import "tailwindcss";\n',
 };

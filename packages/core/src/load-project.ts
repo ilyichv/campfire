@@ -49,7 +49,7 @@ function slideDiagnostics(
       diagnostics.push({
         level: "error",
         code: "missing-layout",
-        message: `Slide "${slide.id}" uses layout "${layout}" but no layouts/${layout}.tsx or layouts/campfire/${layout}.tsx exists.`,
+        message: `Slide "${slide.id}" uses layout "${layout}" but no ${layout}.tsx exists under layouts/.`,
         file: slide.path,
         suggestion: `Create the layout or install one: camp add ${layout}`,
       });

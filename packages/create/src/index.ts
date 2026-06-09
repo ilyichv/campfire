@@ -41,9 +41,6 @@ const files: Record<string, string> = {
   "README.md": readme(name),
   "slides/01-welcome.mdx": FIRST_SLIDE,
   "components/mdx.tsx": MDX_COMPONENTS,
-  "components/campfire/.gitkeep": "",
-  "layouts/campfire/.gitkeep": "",
-  "assets/.gitkeep": "",
 };
 
 for (const [relativePath, content] of Object.entries(files)) {

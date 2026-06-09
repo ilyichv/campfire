@@ -11,7 +11,7 @@
       "path": "items/quote.tsx",
       "content": "import type { ReactNode } from \"react\";\n\n/** Center stage for a single quotation. Pairs well with QuoteCard. */\nexport default function QuoteLayout({\n  children,\n}: {\n  title?: string;\n  children: ReactNode;\n}) {\n  return (\n    <main className=\"flex h-full items-center justify-center p-28\">\n      {children}\n    </main>\n  );\n}\n",
       "type": "registry:file",
-      "target": "layouts/campfire/quote.tsx"
+      "target": "layouts/quote.tsx"
     }
   ],
   "type": "registry:block"

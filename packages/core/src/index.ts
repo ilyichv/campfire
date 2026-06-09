@@ -43,12 +43,10 @@ export type {
   Result,
   SlideFile,
   SlideFrontmatter,
-  SourceKind,
   ThemeFile,
 } from "./types.js";
 export {
   DEFAULT_CANVAS,
   DEFAULT_LAYOUT_NAME,
-  REGISTRY_NAMESPACE,
 } from "./types.js";
 export { type ValidationResult, validateProject } from "./validate.js";

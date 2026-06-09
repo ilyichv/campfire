@@ -5,15 +5,16 @@ description: shadcn-compatible primitives, blocks, and kits
 
 Campfire distributes layouts and components through a **shadcn-compatible
 registry** — no custom format, no hidden runtime dependencies. Items are
-copied as source into your repo:
+copied as source straight into your repo:
 
 ```txt
-components/campfire/   registry components
-layouts/campfire/      registry layouts
+components/   registry components install here
+layouts/      registry layouts install here
 ```
 
-Your own code lives outside those folders and always wins on name
-collisions.
+There is no special registry folder — installed files sit next to your own
+and are yours to edit. If an installed file would collide with one of yours,
+review the diff shadcn shows before accepting the overwrite.
 
 ## Installing
 
@@ -37,11 +38,11 @@ Small reusable components:
 
 | Item | Installs |
 | ---- | -------- |
-| `metric-card` | `components/campfire/metric-card.tsx` |
-| `logo-cloud` | `components/campfire/logo-cloud.tsx` |
-| `callout` | `components/campfire/callout.tsx` |
-| `quote-card` | `components/campfire/quote-card.tsx` |
-| `step` | `components/campfire/step.tsx` |
+| `metric-card` | `components/metric-card.tsx` |
+| `logo-cloud` | `components/logo-cloud.tsx` |
+| `callout` | `components/callout.tsx` |
+| `quote-card` | `components/quote-card.tsx` |
+| `step` | `components/step.tsx` |
 
 ### Blocks
 
@@ -49,12 +50,12 @@ Narrative patterns — a layout plus its supporting components:
 
 | Item | Installs |
 | ---- | -------- |
-| `title` | `layouts/campfire/title.tsx` |
-| `section` | `layouts/campfire/section.tsx` |
-| `problem-solution` | `layouts/campfire/problem-solution.tsx` |
-| `quote` | `layouts/campfire/quote.tsx` + `quote-card` |
-| `closing` | `layouts/campfire/closing.tsx` |
-| `traction` | `layouts/campfire/traction.tsx` + `metric-card` |
+| `title` | `layouts/title.tsx` |
+| `section` | `layouts/section.tsx` |
+| `problem-solution` | `layouts/problem-solution.tsx` + `Problem`/`Solution` |
+| `quote` | `layouts/quote.tsx` + `quote-card` |
+| `closing` | `layouts/closing.tsx` |
+| `traction` | `layouts/traction.tsx` + `metric-card` |
 
 ### Kits
 
@@ -66,5 +67,5 @@ Starter packs that compose multiple blocks (planned, not v1).
 - Installation behavior is exactly shadcn's — `camp add` only resolves nicer
   names.
 - Item metadata uses shadcn's schema: `files[].target` places code under
-  `layouts/campfire/` and `components/campfire/`; `registryDependencies`
-  pulls in supporting primitives.
+  `layouts/` and `components/`; `registryDependencies` pulls in supporting
+  primitives.

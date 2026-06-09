@@ -125,7 +125,7 @@ export const COMPONENTS_JSON = `${JSON.stringify(
     },
     aliases: {
       components: "components",
-      ui: "components/campfire",
+      ui: "components",
       lib: "lib",
       utils: "lib/utils",
       hooks: "hooks",
@@ -174,12 +174,10 @@ Campfire is filesystem-first. Edit files directly and use the CLI to inspect and
 
 - Slides live in \`slides/*.mdx\`.
 - Slide filenames define order: \`01-title.mdx\`, \`02-problem.mdx\`.
-- Layouts live in \`layouts/\`.
-- Registry-installed layouts live in \`layouts/campfire/\`.
-- Components live in \`components/\`.
-- Registry-installed components live in \`components/campfire/\`.
+- Layouts live in \`layouts/\` (registry installs land there too).
+- Components live in \`components/\` (registry installs land there too).
 - Base MDX markdown rendering lives in \`components/mdx.tsx\`.
-- Assets live in \`assets/\` and are served from \`/\`.
+- Static assets go in \`assets/\` (create it when needed); files are served from \`/\`.
 - Styling lives in \`theme.css\` (Tailwind v4, CSS-first — no tailwind.config).
 - Optional settings live in \`campfire.config.ts\` (deck title, canvas size).
 
@@ -214,7 +212,7 @@ and must not own presentation state.
 Components are React files that may import normally. Component names are the
 PascalCase of the filename and form a single flat namespace across
 \`components/\` (directories are ignored; collisions are reported and the
-user file wins).
+file with the shallower path wins).
 
 ## Before finishing changes
 

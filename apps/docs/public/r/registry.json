@@ -12,7 +12,7 @@
         {
           "path": "items/metric-card.tsx",
           "type": "registry:component",
-          "target": "components/campfire/metric-card.tsx"
+          "target": "components/metric-card.tsx"
         }
       ]
     },
@@ -25,7 +25,7 @@
         {
           "path": "items/logo-cloud.tsx",
           "type": "registry:component",
-          "target": "components/campfire/logo-cloud.tsx"
+          "target": "components/logo-cloud.tsx"
         }
       ]
     },
@@ -38,7 +38,7 @@
         {
           "path": "items/callout.tsx",
           "type": "registry:component",
-          "target": "components/campfire/callout.tsx"
+          "target": "components/callout.tsx"
         }
       ]
     },
@@ -51,7 +51,7 @@
         {
           "path": "items/quote-card.tsx",
           "type": "registry:component",
-          "target": "components/campfire/quote-card.tsx"
+          "target": "components/quote-card.tsx"
         }
       ]
     },
@@ -64,7 +64,7 @@
         {
           "path": "items/step.tsx",
           "type": "registry:component",
-          "target": "components/campfire/step.tsx"
+          "target": "components/step.tsx"
         }
       ]
     },
@@ -77,7 +77,7 @@
         {
           "path": "items/title.tsx",
           "type": "registry:file",
-          "target": "layouts/campfire/title.tsx"
+          "target": "layouts/title.tsx"
         }
       ]
     },
@@ -90,7 +90,7 @@
         {
           "path": "items/section.tsx",
           "type": "registry:file",
-          "target": "layouts/campfire/section.tsx"
+          "target": "layouts/section.tsx"
         }
       ]
     },
@@ -103,17 +103,17 @@
         {
           "path": "items/problem-solution.tsx",
           "type": "registry:file",
-          "target": "layouts/campfire/problem-solution.tsx"
+          "target": "layouts/problem-solution.tsx"
         },
         {
           "path": "items/problem.tsx",
           "type": "registry:component",
-          "target": "components/campfire/problem.tsx"
+          "target": "components/problem.tsx"
         },
         {
           "path": "items/solution.tsx",
           "type": "registry:component",
-          "target": "components/campfire/solution.tsx"
+          "target": "components/solution.tsx"
         }
       ]
     },
@@ -127,7 +127,7 @@
         {
           "path": "items/quote.tsx",
           "type": "registry:file",
-          "target": "layouts/campfire/quote.tsx"
+          "target": "layouts/quote.tsx"
         }
       ]
     },
@@ -141,7 +141,7 @@
         {
           "path": "items/traction.tsx",
           "type": "registry:file",
-          "target": "layouts/campfire/traction.tsx"
+          "target": "layouts/traction.tsx"
         }
       ]
     },
@@ -154,7 +154,7 @@
         {
           "path": "items/closing.tsx",
           "type": "registry:file",
-          "target": "layouts/campfire/closing.tsx"
+          "target": "layouts/closing.tsx"
         }
       ]
     }

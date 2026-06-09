@@ -24,20 +24,16 @@ export type SlideFile = {
   body: string;
 };
 
-export type SourceKind = "user" | "registry";
-
 export type LayoutFile = {
   name: string;
   path: string;
   absolutePath: string;
-  source: SourceKind;
 };
 
 export type ComponentFile = {
   name: string;
   path: string;
   absolutePath: string;
-  source: SourceKind;
 };
 
 export type ThemeFile = {
@@ -85,5 +81,4 @@ export type Result<T> =
 
 export const DEFAULT_CANVAS: Canvas = { width: 1280, height: 720 };
 
-export const REGISTRY_NAMESPACE = "campfire";
 export const DEFAULT_LAYOUT_NAME = "default";

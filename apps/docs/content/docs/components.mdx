@@ -3,14 +3,14 @@ title: Components
 description: Storytelling primitives available to every slide
 ---
 
-Components are React files in `components/**/*.tsx`. Registry-installed
-components live in `components/campfire/`.
+Components are React files in `components/**/*.tsx` — yours and
+registry-installed ones side by side.
 
 Every component is automatically available in every slide — no imports:
 
 ```txt
-components/campfire/metric-card.tsx   ->   <MetricCard />
-components/revenue-chart.tsx          ->   <RevenueChart />
+components/metric-card.tsx     ->   <MetricCard />
+components/revenue-chart.tsx   ->   <RevenueChart />
 ```
 
 ## Naming
@@ -25,7 +25,7 @@ charts/revenue-line.tsx  -> RevenueLine
 
 Names form a single **flat namespace** — directories are ignored. If two
 files map to the same name, Campfire reports a `component-collision` warning
-and the user file (outside `components/campfire/`) wins.
+and the file with the shallower path wins.
 
 Each component file should default-export its component (a named export
 matching the component name also works).

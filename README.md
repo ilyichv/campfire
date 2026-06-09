@@ -53,8 +53,9 @@ cd examples/basic
   is optional and falls back to the built-in `default` layout.
 - **Slides never import.** The MDX pipeline rejects ESM in slides;
   `camp validate` reports it as `slide-esm`.
-- Registry code installs into `layouts/campfire/` and `components/campfire/`;
-  user code outside those namespaces wins collisions.
+- Registry code installs straight into `layouts/` and `components/`, next to
+  user code. Names form a flat namespace; on collision the shallower path
+  wins with a warning.
 - Tailwind v4, CSS-first: a single `theme.css`, no `tailwind.config`.
 - Everything builds with rolldown (`tsdown` for packages, Vite 8 for the
   runtime).

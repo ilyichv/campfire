@@ -3,16 +3,16 @@ title: Layouts
 description: Narrative structures, not grids
 ---
 
-Layouts are React components in `layouts/**/*.tsx`. Registry-installed
-layouts live in `layouts/campfire/`. A slide selects one by name:
+Layouts are React components in `layouts/**/*.tsx` — yours and
+registry-installed ones side by side. A slide selects one by name:
 
 ```yaml
 layout: problem-solution
 ```
 
-resolves `layouts/problem-solution.tsx`, falling back to
-`layouts/campfire/problem-solution.tsx`. When both exist, the user file wins
-(with a `layout-collision` warning).
+resolves the layout file named `problem-solution.tsx` anywhere under
+`layouts/`. Names form a flat namespace; if two files share a name, the
+shallower path wins and Campfire reports a `layout-collision` warning.
 
 ## The contract
 

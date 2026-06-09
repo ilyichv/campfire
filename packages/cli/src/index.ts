@@ -100,13 +100,11 @@ cli
     }
     console.log("layouts:");
     for (const layout of manifest.layouts) {
-      console.log(`  ${layout.name} (${layout.source})  ${layout.path}`);
+      console.log(`  ${layout.name}  ${layout.path}`);
     }
     console.log("components:");
     for (const component of manifest.components) {
-      console.log(
-        `  ${component.name} (${component.source})  ${component.path}`
-      );
+      console.log(`  ${component.name}  ${component.path}`);
     }
     printDiagnostics(manifest.diagnostics);
   });

@@ -13,10 +13,8 @@ import type {
   LayoutFile,
   MdxComponentsFile,
   SlideFile,
-  SourceKind,
   ThemeFile,
 } from "./types.js";
-import { REGISTRY_NAMESPACE } from "./types.js";
 
 const frontmatterSchema = z
   .object({
@@ -51,10 +49,16 @@ function walkFiles(dir: string, extensions: string[]): string[] {
   return files.sort();
 }
 
-function sourceKind(relativePath: string, baseDir: string): SourceKind {
-  return relativePath.startsWith(`${baseDir}/${REGISTRY_NAMESPACE}/`)
-    ? "registry"
-    : "user";
+/** On a name collision the shallower path wins (ties go to the
+ * lexicographically first), so `components/card.tsx` beats
+ * `components/nested/card.tsx` deterministically. */
+function preferred(a: string, b: string): string {
+  const depthA = a.split("/").length;
+  const depthB = b.split("/").length;
+  if (depthA !== depthB) {
+    return depthA < depthB ? a : b;
+  }
+  return a < b ? a : b;
 }
 
 export function scanSlides(root: string): {
@@ -157,17 +161,18 @@ export function scanLayouts(root: string): {
       name: baseNameWithoutExtension(path),
       path,
       absolutePath,
-      source: sourceKind(path, "layouts"),
     };
     const existing = seen.get(layout.name);
     if (existing) {
       diagnostics.push({
         level: "warning",
         code: "layout-collision",
-        message: `Layout "${layout.name}" is defined in both ${existing.path} and ${path}. The user layout wins.`,
+        message: `Layout "${layout.name}" is defined in both ${existing.path} and ${path}. ${preferred(existing.path, path)} wins.`,
         file: path,
+        suggestion:
+          "Layout names form a flat namespace; rename one of the files.",
       });
-      if (existing.source === "registry" && layout.source === "user") {
+      if (preferred(existing.path, path) === path) {
         seen.set(layout.name, layout);
       }
     } else {
@@ -201,19 +206,18 @@ export function scanComponents(root: string): {
       name: pascalCase(baseNameWithoutExtension(path)),
       path,
       absolutePath,
-      source: sourceKind(path, "components"),
     };
     const existing = seen.get(component.name);
     if (existing) {
       diagnostics.push({
         level: "warning",
         code: "component-collision",
-        message: `Component "${component.name}" is defined in both ${existing.path} and ${path}. The user component wins.`,
+        message: `Component "${component.name}" is defined in both ${existing.path} and ${path}. ${preferred(existing.path, path)} wins.`,
         file: path,
         suggestion:
           "Component names form a flat namespace; rename one of the files.",
       });
-      if (existing.source === "registry" && component.source === "user") {
+      if (preferred(existing.path, path) === path) {
         seen.set(component.name, component);
       }
     } else {

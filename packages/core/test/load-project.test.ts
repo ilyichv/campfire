@@ -32,7 +32,7 @@ describe("names", () => {
 describe("discoverRoot", () => {
   test("walks up from a subdirectory", () => {
     fixture = createFixture(BASIC_DECK);
-    const nested = join(fixture.root, "components", "campfire");
+    const nested = join(fixture.root, "components", "nested");
     mkdirSync(nested, { recursive: true });
     expect(discoverRoot(nested)).toBe(fixture.root);
   });
@@ -60,9 +60,6 @@ describe("loadProject", () => {
       "problem-solution",
       "title",
     ]);
-    expect(
-      project.layouts.find((l) => l.name === "problem-solution")?.source
-    ).toBe("registry");
     expect(project.components).toHaveLength(1);
     expect(project.components[0]?.name).toBe("MetricCard");
     expect(project.mdxComponents?.path).toBe("components/mdx.tsx");
@@ -127,7 +124,7 @@ describe("loadProject", () => {
     ).toBe(true);
   });
 
-  test("warns on flat-namespace component collisions, user wins", async () => {
+  test("warns on flat-namespace component collisions, shallower path wins", async () => {
     fixture = createFixture({
       ...BASIC_DECK,
       "components/metric-card.tsx":
@@ -142,6 +139,6 @@ describe("loadProject", () => {
     const metricCard = project.components.find(
       (component) => component.name === "MetricCard"
     );
-    expect(metricCard?.source).toBe("user");
+    expect(metricCard?.path).toBe("components/metric-card.tsx");
   });
 });
