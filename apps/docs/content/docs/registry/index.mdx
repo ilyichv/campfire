@@ -1,0 +1,92 @@
+---
+title: Registry
+description: shadcn-compatible primitives, blocks, and kits
+---
+
+Campfire distributes layouts and components through a **shadcn-compatible
+registry** — no custom format, no hidden runtime dependencies. Items are
+copied as source straight into your repo:
+
+```txt
+components/   registry components install here
+layouts/      registry layouts install here
+```
+
+There is no special registry folder — installed files sit next to your own
+and are yours to edit. If an installed file would collide with one of yours,
+review the diff shadcn shows before accepting the overwrite.
+
+## Installing
+
+```bash
+camp add metric-card
+camp add problem-solution
+```
+
+Bare names resolve to this site: `/r/<name>.json`. Anything
+shadcn-compatible works too:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/metric-card.json
+```
+
+## Components
+
+Small reusable primitives, installed under `components/`:
+
+<Cards>
+  <Card href="/docs/registry/metric-card" title="Metric Card">
+    A headline number with label and optional delta.
+  </Card>
+  <Card href="/docs/registry/logo-cloud" title="Logo Cloud">
+    A centered, muted row of logos.
+  </Card>
+  <Card href="/docs/registry/callout" title="Callout">
+    An emphasized aside with tone variants.
+  </Card>
+  <Card href="/docs/registry/quote-card" title="Quote Card">
+    A large quotation with attribution.
+  </Card>
+  <Card href="/docs/registry/step" title="Step">
+    A numbered step with title and detail.
+  </Card>
+</Cards>
+
+## Blocks
+
+Narrative patterns — a layout plus its supporting components, installed under
+`layouts/` (and `components/` for anything they pull in):
+
+<Cards>
+  <Card href="/docs/registry/title" title="Title">
+    Opening slide: oversized title with supporting copy.
+  </Card>
+  <Card href="/docs/registry/section" title="Section">
+    A full-bleed divider slide on the primary color.
+  </Card>
+  <Card href="/docs/registry/problem-solution" title="Problem / Solution">
+    Two-panel narrative layout with Problem and Solution components.
+  </Card>
+  <Card href="/docs/registry/quote" title="Quote">
+    Center stage for a single quotation.
+  </Card>
+  <Card href="/docs/registry/traction" title="Traction">
+    Metrics row plus supporting narrative.
+  </Card>
+  <Card href="/docs/registry/closing" title="Closing">
+    Centered thank-you slide.
+  </Card>
+</Cards>
+
+## Kits
+
+Starter packs that compose multiple blocks (planned, not v1).
+
+## Principles
+
+- The registry distributes **source code into your repo**.
+- Installation behavior is exactly shadcn's — `camp add` only resolves nicer
+  names.
+- Item metadata uses shadcn's schema: `files[].target` places code under
+  `layouts/` and `components/`; `registryDependencies` pulls in supporting
+  primitives.

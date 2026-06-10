@@ -1,0 +1,74 @@
+---
+title: Callout
+description: An emphasized aside with tone variants.
+---
+
+<ComponentPreview name="callout">
+
+```mdx
+<Callout>Slides are files — the repo is the deck.</Callout>
+<Callout tone="primary">Registry items are copied as source. Edit them.</Callout>
+<Callout tone="warning">Filename ordering is the contract: 01, 02, 03…</Callout>
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add callout
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/callout.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `components/callout.tsx`:
+
+<ComponentSource name="callout" title="components/callout.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+```mdx title="slides/04-warning.mdx"
+---
+title: One thing to remember
+---
+
+<Callout tone="primary">
+  Registry items are copied as source. Edit them.
+</Callout>
+```
+
+Tones are defined in the component's `TONES` map — since the file is yours,
+add brand-specific tones by editing it.
+
+## API Reference
+
+<TypeTable
+  type={{
+    tone: {
+      description: "Visual emphasis of the aside.",
+      type: '"default" | "primary" | "warning"',
+      default: '"default"',
+    },
+    children: {
+      description: "The aside content.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>

@@ -1,0 +1,76 @@
+---
+title: Logo Cloud
+description: A centered, muted row of logos.
+---
+
+<ComponentPreview name="logo-cloud">
+
+```mdx
+<LogoCloud title="Trusted by teams at">
+  <img src="/logos/acme.svg" alt="Acme" />
+  <img src="/logos/globex.svg" alt="Globex" />
+  <img src="/logos/initech.svg" alt="Initech" />
+</LogoCloud>
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add logo-cloud
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/logo-cloud.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `components/logo-cloud.tsx`:
+
+<ComponentSource name="logo-cloud" title="components/logo-cloud.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+Children are rendered in a wrapped, grayscale row — images, wordmarks, or
+any inline content work:
+
+```mdx title="slides/03-customers.mdx"
+---
+title: Customers
+---
+
+<LogoCloud title="Trusted by teams at">
+  <img src="/logos/acme.svg" alt="Acme" />
+  <img src="/logos/globex.svg" alt="Globex" />
+</LogoCloud>
+```
+
+## API Reference
+
+<TypeTable
+  type={{
+    title: {
+      description: "Optional uppercase eyebrow above the logos.",
+      type: "string",
+    },
+    children: {
+      description: "The logos — images or text wordmarks.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>

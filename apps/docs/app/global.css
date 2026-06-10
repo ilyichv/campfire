@@ -2,6 +2,18 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 
+/* Registry items are rendered live in the docs; include their classes. */
+@source "../../../registry/items";
+
+/* Default campfire theme tokens, scoped to registry previews. Previews keep
+ * the slide's own (light) theme regardless of the docs color scheme. */
+.cf-slide-frame {
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.15 0 0);
+  --color-primary: oklch(0.55 0.2 260);
+  --color-muted: oklch(0.55 0.02 260);
+}
+
 html {
   scrollbar-gutter: stable;
 }

@@ -3,9 +3,7 @@
   "name": "traction",
   "title": "Traction Layout",
   "description": "Metrics row plus supporting narrative.",
-  "registryDependencies": [
-    "https://campfire.dev/r/metric-card.json"
-  ],
+  "registryDependencies": ["https://campfire.dev/r/metric-card.json"],
   "files": [
     {
       "path": "items/traction.tsx",

@@ -3,9 +3,7 @@
   "name": "quote",
   "title": "Quote Layout",
   "description": "Center stage for a single quotation.",
-  "registryDependencies": [
-    "https://campfire.dev/r/quote-card.json"
-  ],
+  "registryDependencies": ["https://campfire.dev/r/quote-card.json"],
   "files": [
     {
       "path": "items/quote.tsx",

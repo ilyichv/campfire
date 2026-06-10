@@ -1,0 +1,77 @@
+---
+title: Metric Card
+description: A headline number with label and optional delta.
+---
+
+<ComponentPreview name="metric-card">
+
+```mdx
+<MetricCard value="42%" label="Activation lift" delta="+18%" />
+<MetricCard value="1,200" label="Teams onboarded" />
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add metric-card
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/metric-card.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `components/metric-card.tsx`:
+
+<ComponentSource name="metric-card" title="components/metric-card.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+Components are auto-discovered from `components/` — use them in any slide,
+no imports:
+
+```mdx title="slides/05-metrics.mdx"
+---
+title: Metrics
+---
+
+## Primitives, not screenshots
+
+<MetricCard value="42%" label="Activation lift" delta="+18%" />
+```
+
+## API Reference
+
+<TypeTable
+  type={{
+    value: {
+      description: "The headline number.",
+      type: "string",
+      required: true,
+    },
+    label: {
+      description: "Label rendered under the value.",
+      type: "string",
+      required: true,
+    },
+    delta: {
+      description: "Optional change indicator rendered beside the value.",
+      type: "string",
+    },
+  }}
+/>

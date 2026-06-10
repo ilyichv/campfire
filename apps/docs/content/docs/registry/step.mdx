@@ -1,0 +1,89 @@
+---
+title: Step
+description: A numbered step with title and detail.
+---
+
+<ComponentPreview name="step">
+
+```mdx
+<Step number="1" title="Write slides">
+  One MDX file per slide — `01-campfire.mdx`, `02-why.mdx`.
+</Step>
+
+<Step number="2" title="Shape the story">
+  Layouts and components are plain React.
+</Step>
+
+<Step number="3" title="Present">
+  `camp` watches the filesystem and hot reloads.
+</Step>
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add step
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/step.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `components/step.tsx`:
+
+<ComponentSource name="step" title="components/step.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+```mdx title="slides/03-how.mdx"
+---
+title: How it works
+---
+
+## How it works
+
+<Step number="1" title="Write slides">
+  One MDX file per slide.
+</Step>
+
+<Step number="2" title="Present">
+  `camp` serves a live presentation shell.
+</Step>
+```
+
+## API Reference
+
+<TypeTable
+  type={{
+    number: {
+      description: "The step marker rendered in the badge.",
+      type: "number | string",
+      required: true,
+    },
+    title: {
+      description: "Step heading.",
+      type: "string",
+      required: true,
+    },
+    children: {
+      description: "Optional supporting detail under the heading.",
+      type: "ReactNode",
+    },
+  }}
+/>

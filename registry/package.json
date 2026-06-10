@@ -4,10 +4,19 @@
   "description": "Campfire's shadcn-compatible registry items, built into the docs app",
   "private": true,
   "type": "module",
+  "exports": {
+    "./items/*": "./items/*.tsx",
+    "./registry.json": "./registry.json"
+  },
   "scripts": {
     "registry:build": "shadcn build --output ../apps/docs/public/r"
   },
+  "peerDependencies": {
+    "react": "^19"
+  },
   "devDependencies": {
+    "@types/react": "^19.2.16",
+    "react": "^19.2.7",
     "shadcn": "^3.8.5"
   }
 }

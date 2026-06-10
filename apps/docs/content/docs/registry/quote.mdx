@@ -1,0 +1,84 @@
+---
+title: Quote
+description: Center stage for a single quotation.
+---
+
+<ComponentPreview name="quote">
+
+```mdx title="slides/05-quote.mdx"
+---
+layout: quote
+title: What people say
+---
+
+<QuoteCard
+  quote="The most damaging phrase in the language is: it's always been done this way."
+  author="Grace Hopper"
+  role="Rear Admiral, US Navy"
+/>
+```
+
+</ComponentPreview>
+
+## Installation
+
+Installs the layout and pulls in [Quote Card](/docs/registry/quote-card) via
+`registryDependencies`.
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add quote
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/quote.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `layouts/quote.tsx`, then install
+[Quote Card](/docs/registry/quote-card):
+
+<ComponentSource name="quote" title="layouts/quote.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+The layout only centers its children — pair it with `QuoteCard` for the
+typography:
+
+```mdx title="slides/05-quote.mdx"
+---
+layout: quote
+---
+
+<QuoteCard quote="…" author="Grace Hopper" />
+```
+
+## API Reference
+
+Layouts follow the [layout contract](/docs/layouts):
+
+<TypeTable
+  type={{
+    title: {
+      description: "Accepted but not rendered — the quotation is the slide.",
+      type: "string",
+    },
+    children: {
+      description: "The rendered slide body, centered on the canvas.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>

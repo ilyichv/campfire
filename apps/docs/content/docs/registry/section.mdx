@@ -1,0 +1,77 @@
+---
+title: Section
+description: A full-bleed divider slide on the primary color.
+---
+
+<ComponentPreview name="section">
+
+```mdx title="slides/04-numbers.mdx"
+---
+layout: section
+title: Numbers
+---
+
+Section divider before the metrics deep-dive.
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add section
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/section.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `layouts/section.tsx`:
+
+<ComponentSource name="section" title="layouts/section.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+Works with an empty body too — a bare divider between chapters:
+
+```mdx title="slides/04-numbers.mdx"
+---
+layout: section
+title: Numbers
+---
+```
+
+The background uses the theme's `--color-primary`; change the theme and every
+section divider follows.
+
+## API Reference
+
+Layouts follow the [layout contract](/docs/layouts):
+
+<TypeTable
+  type={{
+    title: {
+      description: "From the slide's `title` frontmatter.",
+      type: "string",
+    },
+    children: {
+      description: "The rendered slide body.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>

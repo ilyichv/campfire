@@ -1,0 +1,85 @@
+---
+title: Traction
+description: Metrics row plus supporting narrative.
+---
+
+<ComponentPreview name="traction">
+
+```mdx title="slides/04-traction.mdx"
+---
+layout: traction
+title: Traction
+---
+
+<MetricCard value="42%" label="Activation lift" delta="+18%" />
+<MetricCard value="1,200" label="Teams onboarded" />
+<MetricCard value="68" label="NPS" delta="+5pts" />
+```
+
+</ComponentPreview>
+
+## Installation
+
+Installs the layout and pulls in [Metric Card](/docs/registry/metric-card)
+via `registryDependencies`.
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add traction
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/traction.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `layouts/traction.tsx`, then install
+[Metric Card](/docs/registry/metric-card):
+
+<ComponentSource name="traction" title="layouts/traction.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+Children flow in a wrapping row — mix `MetricCard`s with plain paragraphs
+for supporting narrative:
+
+```mdx title="slides/04-traction.mdx"
+---
+layout: traction
+title: Traction
+---
+
+<MetricCard value="42%" label="Activation lift" delta="+18%" />
+
+Growth is organic: every deck in git is a deck a teammate can fork.
+```
+
+## API Reference
+
+Layouts follow the [layout contract](/docs/layouts):
+
+<TypeTable
+  type={{
+    title: {
+      description: "From the slide's `title` frontmatter.",
+      type: "string",
+    },
+    children: {
+      description: "The rendered slide body — metric cards and narrative.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>

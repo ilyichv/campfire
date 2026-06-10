@@ -1,0 +1,108 @@
+---
+title: Problem / Solution
+description: Two-panel narrative layout with Problem and Solution components.
+---
+
+<ComponentPreview name="problem-solution">
+
+```mdx title="slides/02-why.mdx"
+---
+layout: problem-solution
+title: Why Campfire
+---
+
+<Problem>
+  Decks rot inside proprietary tools — unversioned, undiffable,
+  and impossible for coding agents to help with.
+</Problem>
+
+<Solution>
+  The repo is the deck. Files diff, agents edit safely, and
+  `camp` serves a live presentation shell.
+</Solution>
+```
+
+</ComponentPreview>
+
+## Installation
+
+Installs the layout plus the `Problem` and `Solution` panel components.
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add problem-solution
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/problem-solution.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the three files:
+
+<ComponentSource
+  name="problem-solution"
+  title="layouts/problem-solution.tsx"
+/>
+
+<ComponentSource name="problem" title="components/problem.tsx" />
+
+<ComponentSource name="solution" title="components/solution.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+The layout is a two-column grid; `Problem` and `Solution` fill one column
+each. They are ordinary components — you can also use them outside this
+layout.
+
+```mdx title="slides/02-why.mdx"
+---
+layout: problem-solution
+title: Why Campfire
+---
+
+<Problem>Decks rot in proprietary tools.</Problem>
+<Solution>Slides are files; the repo is the deck.</Solution>
+```
+
+## API Reference
+
+Layouts follow the [layout contract](/docs/layouts):
+
+<TypeTable
+  type={{
+    title: {
+      description: "From the slide's `title` frontmatter.",
+      type: "string",
+    },
+    children: {
+      description: "The rendered slide body — typically a Problem and a Solution.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>
+
+`Problem` and `Solution` each take only `children`:
+
+<TypeTable
+  type={{
+    children: {
+      description: "Panel content.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>

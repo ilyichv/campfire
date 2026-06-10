@@ -1,0 +1,20 @@
+{
+  "title": "Registry",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "---Components---",
+    "metric-card",
+    "logo-cloud",
+    "callout",
+    "quote-card",
+    "step",
+    "---Blocks---",
+    "title",
+    "section",
+    "problem-solution",
+    "quote",
+    "traction",
+    "closing"
+  ]
+}

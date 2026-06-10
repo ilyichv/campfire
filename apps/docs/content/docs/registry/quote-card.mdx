@@ -1,0 +1,83 @@
+---
+title: Quote Card
+description: A large quotation with attribution.
+---
+
+<ComponentPreview name="quote-card">
+
+```mdx
+<QuoteCard
+  quote="The deck that lives in git is the deck that stays true."
+  author="Ada Lovelace"
+  role="Analyst, Analytical Engines"
+/>
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add quote-card
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/quote-card.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `components/quote-card.tsx`:
+
+<ComponentSource name="quote-card" title="components/quote-card.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+Pairs well with the [Quote layout](/docs/registry/quote), which centers a
+single quotation on the slide:
+
+```mdx title="slides/04-quote.mdx"
+---
+layout: quote
+title: What people say
+---
+
+<QuoteCard
+  quote="The deck that lives in git is the deck that stays true."
+  author="Ada Lovelace"
+  role="Analyst, Analytical Engines"
+/>
+```
+
+## API Reference
+
+<TypeTable
+  type={{
+    quote: {
+      description: "The quotation, rendered with typographic quotes.",
+      type: "string",
+      required: true,
+    },
+    author: {
+      description: "Who said it.",
+      type: "string",
+      required: true,
+    },
+    role: {
+      description: "Optional role or affiliation.",
+      type: "string",
+    },
+  }}
+/>

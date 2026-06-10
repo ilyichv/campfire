@@ -1,0 +1,78 @@
+---
+title: Title
+description: "Opening slide: oversized title with supporting copy."
+---
+
+<ComponentPreview name="title">
+
+```mdx title="slides/01-campfire.mdx"
+---
+layout: title
+title: Campfire
+---
+
+Where stories are told. Slides are MDX files, layouts are React,
+and the whole deck is just a repository.
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add title
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/title.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `layouts/title.tsx`:
+
+<ComponentSource name="title" title="layouts/title.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+A slide selects the layout by filename in its frontmatter; the slide body
+becomes `children`:
+
+```mdx title="slides/01-campfire.mdx"
+---
+layout: title
+title: Campfire
+---
+
+Where stories are told.
+```
+
+## API Reference
+
+Layouts follow the [layout contract](/docs/layouts):
+
+<TypeTable
+  type={{
+    title: {
+      description: "From the slide's `title` frontmatter.",
+      type: "string",
+    },
+    children: {
+      description: "The rendered slide body.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>
