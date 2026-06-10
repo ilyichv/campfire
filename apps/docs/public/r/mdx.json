@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mdx",
+  "title": "MDX",
+  "description": "Base markdown renderers for every slide — the components/mdx.tsx file.",
+  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "files": [
+    {
+      "path": "items/mdx.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n/** Base markdown rendering for every slide. Edit freely — this file is\n * yours. Anything defined here wins over discovered components. */\nexport const mdxComponents = {\n  h1: ({ className, ...props }: ComponentProps<\"h1\">) => (\n    <h1\n      className={cn(\"font-bold text-7xl tracking-tight\", className)}\n      {...props}\n    />\n  ),\n  h2: ({ className, ...props }: ComponentProps<\"h2\">) => (\n    <h2\n      className={cn(\"font-semibold text-5xl tracking-tight\", className)}\n      {...props}\n    />\n  ),\n  h3: ({ className, ...props }: ComponentProps<\"h3\">) => (\n    <h3 className={cn(\"font-semibold text-3xl\", className)} {...props} />\n  ),\n  p: ({ className, ...props }: ComponentProps<\"p\">) => (\n    <p className={cn(\"text-2xl leading-relaxed\", className)} {...props} />\n  ),\n  ul: ({ className, ...props }: ComponentProps<\"ul\">) => (\n    <ul\n      className={cn(\"list-disc space-y-2 pl-8 text-2xl\", className)}\n      {...props}\n    />\n  ),\n  ol: ({ className, ...props }: ComponentProps<\"ol\">) => (\n    <ol\n      className={cn(\"list-decimal space-y-2 pl-8 text-2xl\", className)}\n      {...props}\n    />\n  ),\n  blockquote: ({ className, ...props }: ComponentProps<\"blockquote\">) => (\n    <blockquote\n      className={cn(\"border-l-4 pl-6 text-2xl italic opacity-80\", className)}\n      {...props}\n    />\n  ),\n  code: ({ className, ...props }: ComponentProps<\"code\">) => (\n    <code\n      className={cn(\n        \"rounded bg-black/5 px-1.5 py-0.5 font-mono text-[0.9em]\",\n        className\n      )}\n      {...props}\n    />\n  ),\n  a: ({ className, ...props }: ComponentProps<\"a\">) => (\n    <a\n      className={cn(\"text-(--color-primary) underline\", className)}\n      {...props}\n    />\n  ),\n};\n",
+      "type": "registry:file",
+      "target": "components/mdx.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

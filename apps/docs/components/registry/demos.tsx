@@ -3,6 +3,7 @@ import AgendaItem from "@campfire/registry/items/agenda-item";
 import Callout from "@campfire/registry/items/callout";
 import ClosingLayout from "@campfire/registry/items/closing";
 import LogoCloud from "@campfire/registry/items/logo-cloud";
+import { mdxComponents } from "@campfire/registry/items/mdx";
 import MetricCard from "@campfire/registry/items/metric-card";
 import Problem from "@campfire/registry/items/problem";
 import ProblemSolutionLayout from "@campfire/registry/items/problem-solution";
@@ -28,6 +29,22 @@ function Slide({ children }: { children: ReactNode }) {
 }
 
 export const demos: Record<string, ReactNode> = {
+  mdx: (
+    <main className="flex h-full flex-col justify-center gap-8 p-24">
+      <mdxComponents.h2>Markdown, at slide scale</mdxComponents.h2>
+      <mdxComponents.p>
+        Plain prose with <mdxComponents.code>inline code</mdxComponents.code>{" "}
+        and <mdxComponents.a href="#usage">links</mdxComponents.a> renders
+        through <mdxComponents.code>components/mdx.tsx</mdxComponents.code>.
+      </mdxComponents.p>
+      <mdxComponents.ul>
+        <li>Slides are MDX files</li>
+        <li>Filenames define order</li>
+        <li>This file styles every markdown element</li>
+      </mdxComponents.ul>
+      <mdxComponents.blockquote>The repo is the deck.</mdxComponents.blockquote>
+    </main>
+  ),
   "metric-card": (
     <Slide>
       <div className="flex gap-8">

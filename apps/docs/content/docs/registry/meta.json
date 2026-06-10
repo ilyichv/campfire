@@ -4,6 +4,7 @@
   "pages": [
     "index",
     "---Components---",
+    "mdx",
     "metric-card",
     "logo-cloud",
     "callout",

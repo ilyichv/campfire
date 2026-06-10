@@ -34,20 +34,24 @@ matching the component name also works).
 
 `components/mdx.tsx` controls how plain markdown renders in slides — `h1`,
 `p`, `ul`, `blockquote`, `code`, and friends. It is scaffolded by
-`create-campfire` and it is yours to edit:
+`create-campfire` (restore or adopt it with `camp add mdx`) and it is yours
+to edit:
 
 ```tsx
 import type { ComponentProps } from "react";
+import { cn } from "@/lib/utils";
 
 export const mdxComponents = {
-  h1: (props: ComponentProps<"h1">) => (
-    <h1 className="font-bold text-7xl tracking-tight" {...props} />
+  h1: ({ className, ...props }: ComponentProps<"h1">) => (
+    <h1 className={cn("font-bold text-7xl tracking-tight", className)} {...props} />
   ),
-  p: (props: ComponentProps<"p">) => (
-    <p className="text-2xl leading-relaxed" {...props} />
+  p: ({ className, ...props }: ComponentProps<"p">) => (
+    <p className={cn("text-2xl leading-relaxed", className)} {...props} />
   ),
 };
 ```
+
+The full file is documented as the [MDX registry item](/docs/registry/mdx).
 
 Precedence in the slide component map:
 
