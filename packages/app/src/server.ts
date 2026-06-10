@@ -32,6 +32,9 @@ export async function startCampfireApp(
     clearScreen: false,
     plugins: [...campfirePlugin({ root }), react(), tailwindcss()],
     resolve: {
+      // `@/` resolves to the project root so registry items can import
+      // shared code (e.g. `@/lib/utils`) the same way shadcn projects do.
+      alias: { "@": root },
       dedupe: ["react", "react-dom"],
     },
     server: {

@@ -6,7 +6,7 @@ description: A centered, muted row of logos.
 <ComponentPreview name="logo-cloud">
 
 ```mdx
-<LogoCloud title="Trusted by teams at">
+<LogoCloud heading="Trusted by teams at">
   <img src="/logos/acme.svg" alt="Acme" />
   <img src="/logos/globex.svg" alt="Globex" />
   <img src="/logos/initech.svg" alt="Initech" />
@@ -35,7 +35,8 @@ bunx shadcn@latest add https://campfire.dev/r/logo-cloud.json
 
 <Tab value="Manual">
 
-Copy the source into `components/logo-cloud.tsx`:
+Copy the source into `components/logo-cloud.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
 
 <ComponentSource name="logo-cloud" title="components/logo-cloud.tsx" />
 
@@ -53,7 +54,7 @@ any inline content work:
 title: Customers
 ---
 
-<LogoCloud title="Trusted by teams at">
+<LogoCloud heading="Trusted by teams at">
   <img src="/logos/acme.svg" alt="Acme" />
   <img src="/logos/globex.svg" alt="Globex" />
 </LogoCloud>
@@ -61,9 +62,13 @@ title: Customers
 
 ## API Reference
 
+Extends `ComponentProps<"section">` — native props are forwarded and
+`className` is merged last. Parts expose `data-slot="logo-cloud"`,
+`logo-cloud-heading`, and `logo-cloud-logos`.
+
 <TypeTable
   type={{
-    title: {
+    heading: {
       description: "Optional uppercase eyebrow above the logos.",
       type: "string",
     },

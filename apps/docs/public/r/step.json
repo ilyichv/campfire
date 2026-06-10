@@ -2,11 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "step",
   "title": "Step",
-  "description": "A numbered step with title and detail.",
+  "description": "A numbered step with heading and detail.",
+  "registryDependencies": ["https://campfire.dev/r/utils.json"],
   "files": [
     {
       "path": "items/step.tsx",
-      "content": "import type { ReactNode } from \"react\";\n\nexport default function Step({\n  number,\n  title,\n  children,\n}: {\n  number: number | string;\n  title: string;\n  children?: ReactNode;\n}) {\n  return (\n    <div className=\"flex items-start gap-6\">\n      <span className=\"flex size-12 shrink-0 items-center justify-center rounded-full bg-(--color-primary) font-bold text-(--color-background) text-xl\">\n        {number}\n      </span>\n      <div className=\"flex flex-col gap-2\">\n        <span className=\"font-semibold text-3xl\">{title}</span>\n        {children ? (\n          <div className=\"text-xl leading-relaxed opacity-75\">{children}</div>\n        ) : null}\n      </div>\n    </div>\n  );\n}\n",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type StepProps = ComponentProps<\"div\"> & {\n  /** The step marker rendered in the badge. */\n  number: number | string;\n  /** Step heading. */\n  heading: string;\n};\n\n/** A numbered step with heading and optional detail. */\nexport default function Step({\n  number,\n  heading,\n  className,\n  children,\n  ...props\n}: StepProps) {\n  return (\n    <div\n      className={cn(\"flex items-start gap-6\", className)}\n      data-slot=\"step\"\n      {...props}\n    >\n      <span\n        className=\"flex size-12 shrink-0 items-center justify-center rounded-full bg-(--color-primary) font-bold text-(--color-background) text-xl\"\n        data-slot=\"step-number\"\n      >\n        {number}\n      </span>\n      <div className=\"flex flex-col gap-2\">\n        <span className=\"font-semibold text-3xl\" data-slot=\"step-heading\">\n          {heading}\n        </span>\n        {children ? (\n          <div\n            className=\"text-xl leading-relaxed opacity-75\"\n            data-slot=\"step-detail\"\n          >\n            {children}\n          </div>\n        ) : null}\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/step.tsx"
     }

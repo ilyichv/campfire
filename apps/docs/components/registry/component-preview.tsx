@@ -45,7 +45,9 @@ export async function ComponentSource({
   name: string;
   title?: string;
 }) {
-  const code = await fs.readFile(path.join(itemsDir, `${name}.tsx`), "utf8");
+  const code = await fs
+    .readFile(path.join(itemsDir, `${name}.tsx`), "utf8")
+    .catch(() => fs.readFile(path.join(itemsDir, `${name}.ts`), "utf8"));
 
   return (
     <ServerCodeBlock code={code.trim()} codeblock={{ title }} lang="tsx" />

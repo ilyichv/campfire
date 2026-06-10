@@ -33,7 +33,8 @@ bunx shadcn@latest add https://campfire.dev/r/callout.json
 
 <Tab value="Manual">
 
-Copy the source into `components/callout.tsx`:
+Copy the source into `components/callout.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
 
 <ComponentSource name="callout" title="components/callout.tsx" />
 
@@ -53,10 +54,20 @@ title: One thing to remember
 </Callout>
 ```
 
-Tones are defined in the component's `TONES` map — since the file is yours,
-add brand-specific tones by editing it.
+Tones live in the component's `toneStyles` map — since the file is yours,
+add brand-specific tones by editing it. The active tone is exposed as
+`data-tone`, so `theme.css` can restyle variants globally:
+
+```css
+[data-slot="callout"][data-tone="warning"] {
+  border-style: dashed;
+}
+```
 
 ## API Reference
+
+Extends `ComponentProps<"aside">` — native props are forwarded and
+`className` is merged last. Exposes `data-slot="callout"` and `data-tone`.
 
 <TypeTable
   type={{

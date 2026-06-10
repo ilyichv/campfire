@@ -37,7 +37,8 @@ bunx shadcn@latest add https://campfire.dev/r/title.json
 
 <Tab value="Manual">
 
-Copy the source into `layouts/title.tsx`:
+Copy the source into `layouts/title.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
 
 <ComponentSource name="title" title="layouts/title.tsx" />
 
@@ -61,7 +62,8 @@ Where stories are told.
 
 ## API Reference
 
-Layouts follow the [layout contract](/docs/layouts):
+Follows the [layout contract](/docs/layouts) and exposes
+`data-slot="title-layout"` and `title-layout-body`:
 
 <TypeTable
   type={{

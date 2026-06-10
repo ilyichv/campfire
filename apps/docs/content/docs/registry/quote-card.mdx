@@ -9,7 +9,7 @@ description: A large quotation with attribution.
 <QuoteCard
   quote="The deck that lives in git is the deck that stays true."
   author="Ada Lovelace"
-  role="Analyst, Analytical Engines"
+  affiliation="Analyst, Analytical Engines"
 />
 ```
 
@@ -35,7 +35,8 @@ bunx shadcn@latest add https://campfire.dev/r/quote-card.json
 
 <Tab value="Manual">
 
-Copy the source into `components/quote-card.tsx`:
+Copy the source into `components/quote-card.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
 
 <ComponentSource name="quote-card" title="components/quote-card.tsx" />
 
@@ -45,23 +46,26 @@ Copy the source into `components/quote-card.tsx`:
 
 ## Usage
 
-Pairs well with the [Quote layout](/docs/registry/quote), which centers a
-single quotation on the slide:
+Pairs well with the [Statement layout](/docs/registry/statement), which
+centers a single big idea on the slide:
 
 ```mdx title="slides/04-quote.mdx"
 ---
-layout: quote
-title: What people say
+layout: statement
 ---
 
 <QuoteCard
   quote="The deck that lives in git is the deck that stays true."
   author="Ada Lovelace"
-  role="Analyst, Analytical Engines"
+  affiliation="Analyst, Analytical Engines"
 />
 ```
 
 ## API Reference
+
+Extends `ComponentProps<"figure">` — native props are forwarded and
+`className` is merged last. Parts expose `data-slot="quote-card"`,
+`quote-card-quote`, and `quote-card-attribution`.
 
 <TypeTable
   type={{
@@ -75,8 +79,8 @@ title: What people say
       type: "string",
       required: true,
     },
-    role: {
-      description: "Optional role or affiliation.",
+    affiliation: {
+      description: "Optional role or affiliation of the author.",
       type: "string",
     },
   }}

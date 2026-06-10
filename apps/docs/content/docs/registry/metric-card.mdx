@@ -32,7 +32,8 @@ bunx shadcn@latest add https://campfire.dev/r/metric-card.json
 
 <Tab value="Manual">
 
-Copy the source into `components/metric-card.tsx`:
+Copy the source into `components/metric-card.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
 
 <ComponentSource name="metric-card" title="components/metric-card.tsx" />
 
@@ -56,6 +57,11 @@ title: Metrics
 ```
 
 ## API Reference
+
+Extends `ComponentProps<"div">` — native props are forwarded and `className`
+is merged last. Parts expose `data-slot="metric-card"`,
+`metric-card-value`, `metric-card-delta`, and `metric-card-label` for
+theme-level styling.
 
 <TypeTable
   type={{

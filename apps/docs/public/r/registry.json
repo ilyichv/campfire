@@ -4,10 +4,25 @@
   "homepage": "https://campfire.dev",
   "items": [
     {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "The cn class-merging helper (clsx + tailwind-merge) every item builds on.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "items/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
       "name": "metric-card",
       "type": "registry:component",
       "title": "Metric Card",
       "description": "A headline number with label and optional delta.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/metric-card.tsx",
@@ -21,6 +36,7 @@
       "type": "registry:component",
       "title": "Logo Cloud",
       "description": "A centered, muted row of logos.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/logo-cloud.tsx",
@@ -34,6 +50,7 @@
       "type": "registry:component",
       "title": "Callout",
       "description": "An emphasized aside with tone variants.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/callout.tsx",
@@ -47,6 +64,7 @@
       "type": "registry:component",
       "title": "Quote Card",
       "description": "A large quotation with attribution.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/quote-card.tsx",
@@ -59,7 +77,8 @@
       "name": "step",
       "type": "registry:component",
       "title": "Step",
-      "description": "A numbered step with title and detail.",
+      "description": "A numbered step with heading and detail.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/step.tsx",
@@ -69,10 +88,44 @@
       ]
     },
     {
+      "name": "timeline",
+      "type": "registry:component",
+      "title": "Timeline",
+      "description": "A horizontal sequence of milestones for roadmap slides.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
+      "files": [
+        {
+          "path": "items/timeline.tsx",
+          "type": "registry:component",
+          "target": "components/timeline.tsx"
+        },
+        {
+          "path": "items/timeline-item.tsx",
+          "type": "registry:component",
+          "target": "components/timeline-item.tsx"
+        }
+      ]
+    },
+    {
+      "name": "team-member",
+      "type": "registry:component",
+      "title": "Team Member",
+      "description": "A person card for team slides: photo or initials, name, role.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
+      "files": [
+        {
+          "path": "items/team-member.tsx",
+          "type": "registry:component",
+          "target": "components/team-member.tsx"
+        }
+      ]
+    },
+    {
       "name": "title",
       "type": "registry:block",
       "title": "Title Layout",
       "description": "Opening slide: oversized title with supporting copy.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/title.tsx",
@@ -82,10 +135,30 @@
       ]
     },
     {
+      "name": "agenda",
+      "type": "registry:block",
+      "title": "Agenda",
+      "description": "What the talk covers: a layout plus the AgendaItem row.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
+      "files": [
+        {
+          "path": "items/agenda.tsx",
+          "type": "registry:file",
+          "target": "layouts/agenda.tsx"
+        },
+        {
+          "path": "items/agenda-item.tsx",
+          "type": "registry:component",
+          "target": "components/agenda-item.tsx"
+        }
+      ]
+    },
+    {
       "name": "section",
       "type": "registry:block",
       "title": "Section Layout",
       "description": "A full-bleed divider slide on the primary color.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/section.tsx",
@@ -95,10 +168,39 @@
       ]
     },
     {
+      "name": "split",
+      "type": "registry:block",
+      "title": "Split Layout",
+      "description": "The two-column workhorse: children flow into equal panels.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
+      "files": [
+        {
+          "path": "items/split.tsx",
+          "type": "registry:file",
+          "target": "layouts/split.tsx"
+        }
+      ]
+    },
+    {
+      "name": "statement",
+      "type": "registry:block",
+      "title": "Statement Layout",
+      "description": "One big takeaway, centered. Also the home for a QuoteCard.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
+      "files": [
+        {
+          "path": "items/statement.tsx",
+          "type": "registry:file",
+          "target": "layouts/statement.tsx"
+        }
+      ]
+    },
+    {
       "name": "problem-solution",
       "type": "registry:block",
       "title": "Problem / Solution",
       "description": "Two-panel narrative layout with Problem and Solution components.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/problem-solution.tsx",
@@ -118,38 +220,11 @@
       ]
     },
     {
-      "name": "quote",
-      "type": "registry:block",
-      "title": "Quote Layout",
-      "description": "Center stage for a single quotation.",
-      "registryDependencies": ["https://campfire.dev/r/quote-card.json"],
-      "files": [
-        {
-          "path": "items/quote.tsx",
-          "type": "registry:file",
-          "target": "layouts/quote.tsx"
-        }
-      ]
-    },
-    {
-      "name": "traction",
-      "type": "registry:block",
-      "title": "Traction Layout",
-      "description": "Metrics row plus supporting narrative.",
-      "registryDependencies": ["https://campfire.dev/r/metric-card.json"],
-      "files": [
-        {
-          "path": "items/traction.tsx",
-          "type": "registry:file",
-          "target": "layouts/traction.tsx"
-        }
-      ]
-    },
-    {
       "name": "closing",
       "type": "registry:block",
       "title": "Closing Layout",
       "description": "Centered thank-you slide.",
+      "registryDependencies": ["https://campfire.dev/r/utils.json"],
       "files": [
         {
           "path": "items/closing.tsx",

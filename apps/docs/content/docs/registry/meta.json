@@ -9,12 +9,15 @@
     "callout",
     "quote-card",
     "step",
+    "timeline",
+    "team-member",
     "---Blocks---",
     "title",
+    "agenda",
     "section",
+    "split",
+    "statement",
     "problem-solution",
-    "quote",
-    "traction",
     "closing"
   ]
 }

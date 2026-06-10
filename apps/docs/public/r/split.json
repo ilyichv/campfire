@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split",
+  "title": "Split Layout",
+  "description": "The two-column workhorse: children flow into equal panels.",
+  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "files": [
+    {
+      "path": "items/split.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type SplitLayoutProps = ComponentProps<\"main\"> & {\n  /** From the slide's `title` frontmatter. */\n  title?: string;\n};\n\n/** The two-column workhorse: children flow into equal side-by-side panels. */\nexport default function SplitLayout({\n  title,\n  className,\n  children,\n  ...props\n}: SplitLayoutProps) {\n  return (\n    <main\n      className={cn(\"flex h-full flex-col gap-10 p-24\", className)}\n      data-slot=\"split-layout\"\n      {...props}\n    >\n      {title ? (\n        <h1 className=\"font-bold text-6xl tracking-tight\">{title}</h1>\n      ) : null}\n      <div\n        className=\"grid flex-1 grid-cols-2 items-center gap-16 text-2xl leading-relaxed\"\n        data-slot=\"split-layout-panels\"\n      >\n        {children}\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "layouts/split.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

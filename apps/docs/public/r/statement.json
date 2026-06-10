@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "statement",
+  "title": "Statement Layout",
+  "description": "One big takeaway, centered. Also the home for a QuoteCard.",
+  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "files": [
+    {
+      "path": "items/statement.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type StatementLayoutProps = ComponentProps<\"main\"> & {\n  /** From the slide's `title` frontmatter, rendered as an eyebrow. */\n  title?: string;\n};\n\n/** One big takeaway, centered. Also the natural home for a QuoteCard. */\nexport default function StatementLayout({\n  title,\n  className,\n  children,\n  ...props\n}: StatementLayoutProps) {\n  return (\n    <main\n      className={cn(\n        \"flex h-full flex-col items-center justify-center gap-10 p-28 text-center\",\n        className\n      )}\n      data-slot=\"statement-layout\"\n      {...props}\n    >\n      {title ? (\n        <span className=\"font-medium text-(--color-primary) text-xl uppercase tracking-[0.2em]\">\n          {title}\n        </span>\n      ) : null}\n      <div\n        className=\"flex max-w-5xl flex-col items-center gap-8 font-semibold text-6xl leading-tight tracking-tight [&_p]:font-semibold [&_p]:text-6xl [&_p]:leading-tight [&_p]:tracking-tight\"\n        data-slot=\"statement-layout-statement\"\n      >\n        {children}\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "layouts/statement.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

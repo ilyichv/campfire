@@ -46,7 +46,8 @@ bunx shadcn@latest add https://campfire.dev/r/problem-solution.json
 
 <Tab value="Manual">
 
-Copy the three files:
+Copy the three files. They import `cn` from `@/lib/utils` — scaffolded by
+`create-campfire`, or `camp add utils`:
 
 <ComponentSource
   name="problem-solution"
@@ -77,9 +78,13 @@ title: Why Campfire
 <Solution>Slides are files; the repo is the deck.</Solution>
 ```
 
+A generic two-column slide without the problem/solution framing is the
+[Split layout](/docs/registry/split).
+
 ## API Reference
 
-Layouts follow the [layout contract](/docs/layouts):
+The layout follows the [layout contract](/docs/layouts) and exposes
+`data-slot="problem-solution-layout"` and `problem-solution-layout-panels`:
 
 <TypeTable
   type={{
@@ -95,7 +100,8 @@ Layouts follow the [layout contract](/docs/layouts):
   }}
 />
 
-`Problem` and `Solution` each take only `children`:
+`Problem` and `Solution` extend `ComponentProps<"section">` (exposing
+`data-slot="problem"` / `data-slot="solution"`) and take only `children`:
 
 <TypeTable
   type={{

@@ -36,7 +36,8 @@ bunx shadcn@latest add https://campfire.dev/r/closing.json
 
 <Tab value="Manual">
 
-Copy the source into `layouts/closing.tsx`:
+Copy the source into `layouts/closing.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
 
 <ComponentSource name="closing" title="layouts/closing.tsx" />
 
@@ -57,7 +58,8 @@ Questions? Find the deck in the repo.
 
 ## API Reference
 
-Layouts follow the [layout contract](/docs/layouts):
+Follows the [layout contract](/docs/layouts) and exposes
+`data-slot="closing-layout"` and `closing-layout-body`:
 
 <TypeTable
   type={{

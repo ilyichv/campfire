@@ -1,0 +1,104 @@
+---
+title: Timeline
+description: A horizontal sequence of milestones for roadmap slides.
+---
+
+<ComponentPreview name="timeline">
+
+```mdx
+<Timeline>
+  <TimelineItem period="Q1" heading="Prototype">
+    Filesystem runtime and live shell.
+  </TimelineItem>
+  <TimelineItem period="Q2" heading="Registry">
+    shadcn-compatible blocks and primitives.
+  </TimelineItem>
+  <TimelineItem period="Q3" heading="Kits">
+    Starter packs that compose blocks.
+  </TimelineItem>
+  <TimelineItem period="Q4" heading="v1">
+    Stable layout contract.
+  </TimelineItem>
+</Timeline>
+```
+
+</ComponentPreview>
+
+## Installation
+
+Installs `Timeline` and `TimelineItem` together.
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add timeline
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/timeline.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy both files. They import `cn` from `@/lib/utils` — scaffolded by
+`create-campfire`, or `camp add utils`:
+
+<ComponentSource name="timeline" title="components/timeline.tsx" />
+
+<ComponentSource name="timeline-item" title="components/timeline-item.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+Items share the row equally; the connecting line stops at the last marker:
+
+```mdx title="slides/05-roadmap.mdx"
+---
+title: Roadmap
+---
+
+## Roadmap
+
+<Timeline>
+  <TimelineItem period="Now" heading="Private beta" />
+  <TimelineItem period="Q3" heading="Public launch" />
+  <TimelineItem period="Q4" heading="Enterprise" />
+</Timeline>
+```
+
+## API Reference
+
+`Timeline` extends `ComponentProps<"ol">` and exposes
+`data-slot="timeline"`; it only lays out its items.
+
+`TimelineItem` extends `ComponentProps<"li">` — native props are forwarded
+and `className` is merged last. Parts expose `data-slot="timeline-item"`,
+`timeline-item-marker`, `timeline-item-period`, `timeline-item-heading`,
+and `timeline-item-detail`.
+
+<TypeTable
+  type={{
+    heading: {
+      description: "Milestone heading.",
+      type: "string",
+      required: true,
+    },
+    period: {
+      description: 'Optional time marker, e.g. "Q3 2026".',
+      type: "string",
+    },
+    children: {
+      description: "Optional supporting detail.",
+      type: "ReactNode",
+    },
+  }}
+/>

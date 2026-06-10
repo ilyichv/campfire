@@ -12,8 +12,10 @@ export function packageJson(name: string): string {
         "check-types": "tsc --noEmit",
       },
       dependencies: {
+        clsx: "^2.1.1",
         react: "^19.2.7",
         "react-dom": "^19.2.7",
+        "tailwind-merge": "^3.6.0",
       },
       devDependencies: {
         "@biomejs/biome": "^2.4.16",
@@ -41,8 +43,11 @@ export const TSCONFIG = `${JSON.stringify(
       noEmit: true,
       skipLibCheck: true,
       isolatedModules: true,
+      paths: {
+        "@/*": ["./*"],
+      },
     },
-    include: ["layouts", "components", "campfire.config.ts"],
+    include: ["layouts", "components", "lib", "campfire.config.ts"],
   },
   null,
   2
@@ -98,6 +103,15 @@ export const mdxComponents = {
 };
 `;
 
+export const LIB_UTILS = `import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+/** Merge class names; later classes win on Tailwind conflicts. */
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+`;
+
 export const FIRST_SLIDE = `---
 title: Welcome to Campfire
 ---
@@ -124,11 +138,11 @@ export const COMPONENTS_JSON = `${JSON.stringify(
       cssVariables: true,
     },
     aliases: {
-      components: "components",
-      ui: "components",
-      lib: "lib",
-      utils: "lib/utils",
-      hooks: "hooks",
+      components: "@/components",
+      ui: "@/components",
+      lib: "@/lib",
+      utils: "@/lib/utils",
+      hooks: "@/hooks",
     },
   },
   null,

@@ -1,20 +1,20 @@
 ---
 title: Step
-description: A numbered step with title and detail.
+description: A numbered step with heading and detail.
 ---
 
 <ComponentPreview name="step">
 
 ```mdx
-<Step number="1" title="Write slides">
+<Step number="1" heading="Write slides">
   One MDX file per slide — `01-campfire.mdx`, `02-why.mdx`.
 </Step>
 
-<Step number="2" title="Shape the story">
+<Step number="2" heading="Shape the story">
   Layouts and components are plain React.
 </Step>
 
-<Step number="3" title="Present">
+<Step number="3" heading="Present">
   `camp` watches the filesystem and hot reloads.
 </Step>
 ```
@@ -41,7 +41,8 @@ bunx shadcn@latest add https://campfire.dev/r/step.json
 
 <Tab value="Manual">
 
-Copy the source into `components/step.tsx`:
+Copy the source into `components/step.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
 
 <ComponentSource name="step" title="components/step.tsx" />
 
@@ -58,16 +59,20 @@ title: How it works
 
 ## How it works
 
-<Step number="1" title="Write slides">
+<Step number="1" heading="Write slides">
   One MDX file per slide.
 </Step>
 
-<Step number="2" title="Present">
+<Step number="2" heading="Present">
   `camp` serves a live presentation shell.
 </Step>
 ```
 
 ## API Reference
+
+Extends `ComponentProps<"div">` — native props are forwarded and `className`
+is merged last. Parts expose `data-slot="step"`, `step-number`,
+`step-heading`, and `step-detail`.
 
 <TypeTable
   type={{
@@ -76,7 +81,7 @@ title: How it works
       type: "number | string",
       required: true,
     },
-    title: {
+    heading: {
       description: "Step heading.",
       type: "string",
       required: true,

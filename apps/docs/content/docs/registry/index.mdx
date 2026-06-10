@@ -10,6 +10,7 @@ copied as source straight into your repo:
 ```txt
 components/   registry components install here
 layouts/      registry layouts install here
+lib/          shared helpers (cn) install here
 ```
 
 There is no special registry folder — installed files sit next to your own
@@ -48,7 +49,13 @@ Small reusable primitives, installed under `components/`:
     A large quotation with attribution.
   </Card>
   <Card href="/docs/registry/step" title="Step">
-    A numbered step with title and detail.
+    A numbered step with heading and detail.
+  </Card>
+  <Card href="/docs/registry/timeline" title="Timeline">
+    A horizontal sequence of milestones for roadmap slides.
+  </Card>
+  <Card href="/docs/registry/team-member" title="Team Member">
+    A person card for team slides: photo or initials, name, role.
   </Card>
 </Cards>
 
@@ -61,17 +68,20 @@ Narrative patterns — a layout plus its supporting components, installed under
   <Card href="/docs/registry/title" title="Title">
     Opening slide: oversized title with supporting copy.
   </Card>
+  <Card href="/docs/registry/agenda" title="Agenda">
+    What the talk covers, as numbered rows.
+  </Card>
   <Card href="/docs/registry/section" title="Section">
     A full-bleed divider slide on the primary color.
   </Card>
+  <Card href="/docs/registry/split" title="Split">
+    The two-column workhorse: children flow into equal panels.
+  </Card>
+  <Card href="/docs/registry/statement" title="Statement">
+    One big takeaway, centered.
+  </Card>
   <Card href="/docs/registry/problem-solution" title="Problem / Solution">
     Two-panel narrative layout with Problem and Solution components.
-  </Card>
-  <Card href="/docs/registry/quote" title="Quote">
-    Center stage for a single quotation.
-  </Card>
-  <Card href="/docs/registry/traction" title="Traction">
-    Metrics row plus supporting narrative.
   </Card>
   <Card href="/docs/registry/closing" title="Closing">
     Centered thank-you slide.
@@ -84,9 +94,28 @@ Starter packs that compose multiple blocks (planned, not v1).
 
 ## Principles
 
+Shipped items follow the [components.build](https://www.components.build)
+standard for composable components:
+
+- **Native first.** Every component wraps one element and extends its
+  attributes (`ComponentProps<"div">`), so anything HTML accepts, the
+  component accepts.
+- **Overridable styling.** Base classes merge with your `className` through
+  `cn` (clsx + tailwind-merge), user classes win. The `utils` item provides
+  `cn`; every item depends on it.
+- **Stable styling hooks.** Each part exposes a `data-slot` attribute
+  (`data-slot="metric-card-value"`), so `theme.css` can restyle items without
+  touching their source. Variants surface as data attributes too
+  (`data-tone` on Callout).
+- **No naming conflicts.** Props never shadow native attributes — items use
+  `heading` instead of `title`, `affiliation` instead of `role`.
+- **Exported types.** Every item exports its `<Name>Props` type.
+
+And the registry itself:
+
 - The registry distributes **source code into your repo**.
 - Installation behavior is exactly shadcn's — `camp add` only resolves nicer
   names.
 - Item metadata uses shadcn's schema: `files[].target` places code under
   `layouts/` and `components/`; `registryDependencies` pulls in supporting
-  primitives.
+  items.

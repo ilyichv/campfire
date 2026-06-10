@@ -7,6 +7,7 @@ import {
   COMPONENTS_JSON,
   FIRST_SLIDE,
   GITIGNORE,
+  LIB_UTILS,
   MDX_COMPONENTS,
   packageJson,
   readme,
@@ -41,6 +42,7 @@ const files: Record<string, string> = {
   "README.md": readme(name),
   "slides/01-welcome.mdx": FIRST_SLIDE,
   "components/mdx.tsx": MDX_COMPONENTS,
+  "lib/utils.ts": LIB_UTILS,
 };
 
 for (const [relativePath, content] of Object.entries(files)) {

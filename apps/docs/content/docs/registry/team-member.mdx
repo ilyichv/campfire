@@ -1,0 +1,88 @@
+---
+title: Team Member
+description: "A person card for team slides: photo or initials, name, role."
+---
+
+<ComponentPreview name="team-member">
+
+```mdx
+<TeamMember name="Ada Lovelace" position="CEO & Co-founder" />
+<TeamMember name="Grace Hopper" position="CTO & Co-founder" />
+<TeamMember name="Alan Turing" position="Founding Engineer" />
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add team-member
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/team-member.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `components/team-member.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
+
+<ComponentSource name="team-member" title="components/team-member.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+Without `src` the avatar falls back to the person's initials. Photos go in
+`assets/` (served from `/`):
+
+```mdx title="slides/07-team.mdx"
+---
+title: Team
+---
+
+## The team
+
+<TeamMember name="Ada Lovelace" position="CEO" src="/team/ada.jpg" />
+<TeamMember name="Grace Hopper" position="CTO" />
+```
+
+## API Reference
+
+Extends `ComponentProps<"figure">` — native props are forwarded and
+`className` is merged last. Parts expose `data-slot="team-member"`,
+`team-member-photo`, `team-member-name`, `team-member-position`, and
+`team-member-detail`.
+
+<TypeTable
+  type={{
+    name: {
+      description: "Full name; also the source of the initials fallback.",
+      type: "string",
+      required: true,
+    },
+    position: {
+      description: 'Optional role, e.g. "CEO & Co-founder".',
+      type: "string",
+    },
+    src: {
+      description: "Optional photo URL; falls back to initials.",
+      type: "string",
+    },
+    children: {
+      description: "Optional bio line under the role.",
+      type: "ReactNode",
+    },
+  }}
+/>

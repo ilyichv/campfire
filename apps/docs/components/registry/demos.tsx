@@ -1,16 +1,21 @@
+import AgendaLayout from "@campfire/registry/items/agenda";
+import AgendaItem from "@campfire/registry/items/agenda-item";
 import Callout from "@campfire/registry/items/callout";
 import ClosingLayout from "@campfire/registry/items/closing";
 import LogoCloud from "@campfire/registry/items/logo-cloud";
 import MetricCard from "@campfire/registry/items/metric-card";
 import Problem from "@campfire/registry/items/problem";
 import ProblemSolutionLayout from "@campfire/registry/items/problem-solution";
-import QuoteLayout from "@campfire/registry/items/quote";
 import QuoteCard from "@campfire/registry/items/quote-card";
 import SectionLayout from "@campfire/registry/items/section";
 import Solution from "@campfire/registry/items/solution";
+import SplitLayout from "@campfire/registry/items/split";
+import StatementLayout from "@campfire/registry/items/statement";
 import Step from "@campfire/registry/items/step";
+import TeamMember from "@campfire/registry/items/team-member";
+import Timeline from "@campfire/registry/items/timeline";
+import TimelineItem from "@campfire/registry/items/timeline-item";
 import TitleLayout from "@campfire/registry/items/title";
-import TractionLayout from "@campfire/registry/items/traction";
 import type { ReactNode } from "react";
 
 /** Primitives render inside a minimal slide so they appear at slide scale. */
@@ -33,7 +38,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   "logo-cloud": (
     <Slide>
-      <LogoCloud title="Trusted by teams at">
+      <LogoCloud heading="Trusted by teams at">
         <span className="font-bold text-3xl">acme</span>
         <span className="font-bold text-3xl">globex</span>
         <span className="font-bold text-3xl">initech</span>
@@ -57,26 +62,52 @@ export const demos: Record<string, ReactNode> = {
   ),
   "quote-card": (
     <Slide>
-      {/* biome-ignore lint/a11y/useValidAriaRole: QuoteCard's role prop is attribution, not ARIA */}
       <QuoteCard
+        affiliation="Analyst, Analytical Engines"
         author="Ada Lovelace"
         quote="The deck that lives in git is the deck that stays true."
-        role="Analyst, Analytical Engines"
       />
     </Slide>
   ),
   step: (
     <Slide>
       <div className="flex flex-col gap-10">
-        <Step number="1" title="Write slides">
+        <Step heading="Write slides" number="1">
           One MDX file per slide — 01-campfire.mdx, 02-why.mdx.
         </Step>
-        <Step number="2" title="Shape the story">
+        <Step heading="Shape the story" number="2">
           Layouts and components are plain React.
         </Step>
-        <Step number="3" title="Present">
+        <Step heading="Present" number="3">
           camp watches the filesystem and hot reloads.
         </Step>
+      </div>
+    </Slide>
+  ),
+  timeline: (
+    <Slide>
+      <Timeline>
+        <TimelineItem heading="Prototype" period="Q1">
+          Filesystem runtime and live shell.
+        </TimelineItem>
+        <TimelineItem heading="Registry" period="Q2">
+          shadcn-compatible blocks and primitives.
+        </TimelineItem>
+        <TimelineItem heading="Kits" period="Q3">
+          Starter packs that compose blocks.
+        </TimelineItem>
+        <TimelineItem heading="v1" period="Q4">
+          Stable layout contract.
+        </TimelineItem>
+      </Timeline>
+    </Slide>
+  ),
+  "team-member": (
+    <Slide>
+      <div className="flex gap-12">
+        <TeamMember name="Ada Lovelace" position="CEO & Co-founder" />
+        <TeamMember name="Grace Hopper" position="CTO & Co-founder" />
+        <TeamMember name="Alan Turing" position="Founding Engineer" />
       </div>
     </Slide>
   ),
@@ -86,10 +117,36 @@ export const demos: Record<string, ReactNode> = {
       whole deck is just a repository.
     </TitleLayout>
   ),
+  agenda: (
+    <AgendaLayout title="Agenda">
+      <AgendaItem heading="The problem" number="01" />
+      <AgendaItem heading="What we built" number="02" />
+      <AgendaItem heading="Where it goes next" number="03" />
+    </AgendaLayout>
+  ),
   section: (
     <SectionLayout title="Numbers">
       Section divider before the metrics deep-dive.
     </SectionLayout>
+  ),
+  split: (
+    <SplitLayout title="Two ways to tell it">
+      <div className="flex flex-col gap-4">
+        <p>
+          Narrative on the left: why decks belong in git, diffed and reviewed
+          like everything else you ship.
+        </p>
+      </div>
+      <div className="flex flex-col gap-6">
+        <MetricCard delta="+18%" label="Activation lift" value="42%" />
+        <MetricCard label="Teams onboarded" value="1,200" />
+      </div>
+    </SplitLayout>
+  ),
+  statement: (
+    <StatementLayout title="The takeaway">
+      The repo is the deck.
+    </StatementLayout>
   ),
   "problem-solution": (
     <ProblemSolutionLayout title="Why Campfire">
@@ -102,23 +159,6 @@ export const demos: Record<string, ReactNode> = {
         live presentation shell.
       </Solution>
     </ProblemSolutionLayout>
-  ),
-  quote: (
-    <QuoteLayout>
-      {/* biome-ignore lint/a11y/useValidAriaRole: QuoteCard's role prop is attribution, not ARIA */}
-      <QuoteCard
-        author="Grace Hopper"
-        quote="The most damaging phrase in the language is: it's always been done this way."
-        role="Rear Admiral, US Navy"
-      />
-    </QuoteLayout>
-  ),
-  traction: (
-    <TractionLayout title="Traction">
-      <MetricCard delta="+18%" label="Activation lift" value="42%" />
-      <MetricCard label="Teams onboarded" value="1,200" />
-      <MetricCard delta="+5pts" label="NPS" value="68" />
-    </TractionLayout>
   ),
   closing: (
     <ClosingLayout title="Thanks">

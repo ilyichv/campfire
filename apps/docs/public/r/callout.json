@@ -3,10 +3,11 @@
   "name": "callout",
   "title": "Callout",
   "description": "An emphasized aside with tone variants.",
+  "registryDependencies": ["https://campfire.dev/r/utils.json"],
   "files": [
     {
       "path": "items/callout.tsx",
-      "content": "import type { ReactNode } from \"react\";\n\nconst TONES = {\n  default: \"border-(--color-foreground)/15 bg-(--color-foreground)/[0.04]\",\n  primary: \"border-(--color-primary)/40 bg-(--color-primary)/10\",\n  warning: \"border-amber-500/40 bg-amber-500/10\",\n} as const;\n\nexport default function Callout({\n  tone = \"default\",\n  children,\n}: {\n  tone?: keyof typeof TONES;\n  children: ReactNode;\n}) {\n  return (\n    <aside\n      className={`rounded-xl border-2 px-8 py-6 text-2xl leading-relaxed ${TONES[tone]}`}\n    >\n      {children}\n    </aside>\n  );\n}\n",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type CalloutTone = \"default\" | \"primary\" | \"warning\";\n\nconst toneStyles: Record<CalloutTone, string> = {\n  default: \"border-(--color-foreground)/15 bg-(--color-foreground)/[0.04]\",\n  primary: \"border-(--color-primary)/40 bg-(--color-primary)/10\",\n  warning: \"border-amber-500/40 bg-amber-500/10\",\n};\n\nexport type CalloutProps = ComponentProps<\"aside\"> & {\n  /** Visual emphasis of the aside. */\n  tone?: CalloutTone;\n};\n\n/** An emphasized aside with tone variants. */\nexport default function Callout({\n  tone = \"default\",\n  className,\n  ...props\n}: CalloutProps) {\n  return (\n    <aside\n      className={cn(\n        \"rounded-xl border-2 px-8 py-6 text-2xl leading-relaxed\",\n        toneStyles[tone],\n        className\n      )}\n      data-slot=\"callout\"\n      data-tone={tone}\n      {...props}\n    />\n  );\n}\n",
       "type": "registry:component",
       "target": "components/callout.tsx"
     }

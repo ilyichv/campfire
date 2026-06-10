@@ -1,0 +1,83 @@
+---
+title: Statement
+description: One big takeaway, centered.
+---
+
+<ComponentPreview name="statement">
+
+```mdx title="slides/05-takeaway.mdx"
+---
+layout: statement
+title: The takeaway
+---
+
+The repo is the deck.
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add statement
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/statement.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `layouts/statement.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
+
+<ComponentSource name="statement" title="layouts/statement.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+The slide body renders at display scale, centered. `title` becomes a small
+eyebrow above it. It is also the natural home for a
+[Quote Card](/docs/registry/quote-card):
+
+```mdx title="slides/04-quote.mdx"
+---
+layout: statement
+---
+
+<QuoteCard
+  quote="The deck that lives in git is the deck that stays true."
+  author="Ada Lovelace"
+/>
+```
+
+## API Reference
+
+Follows the [layout contract](/docs/layouts) and exposes
+`data-slot="statement-layout"` and `statement-layout-statement`.
+
+<TypeTable
+  type={{
+    title: {
+      description:
+        "From the slide's `title` frontmatter, rendered as an eyebrow.",
+      type: "string",
+    },
+    children: {
+      description: "The takeaway, rendered at display scale.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>

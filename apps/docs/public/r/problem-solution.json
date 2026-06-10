@@ -3,22 +3,23 @@
   "name": "problem-solution",
   "title": "Problem / Solution",
   "description": "Two-panel narrative layout with Problem and Solution components.",
+  "registryDependencies": ["https://campfire.dev/r/utils.json"],
   "files": [
     {
       "path": "items/problem-solution.tsx",
-      "content": "import type { ReactNode } from \"react\";\n\n/** Pair with the Problem and Solution components installed alongside:\n *\n * ```mdx\n * <Problem>Decks rot in proprietary tools.</Problem>\n * <Solution>Slides are files; the repo is the deck.</Solution>\n * ```\n */\nexport default function ProblemSolutionLayout({\n  title,\n  children,\n}: {\n  title?: string;\n  children: ReactNode;\n}) {\n  return (\n    <main className=\"flex h-full flex-col gap-10 p-24\">\n      {title ? (\n        <h1 className=\"font-bold text-6xl tracking-tight\">{title}</h1>\n      ) : null}\n      <div className=\"grid flex-1 grid-cols-2 items-stretch gap-10\">\n        {children}\n      </div>\n    </main>\n  );\n}\n",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type ProblemSolutionLayoutProps = ComponentProps<\"main\"> & {\n  /** From the slide's `title` frontmatter. */\n  title?: string;\n};\n\n/** Pair with the Problem and Solution components installed alongside:\n *\n * ```mdx\n * <Problem>Decks rot in proprietary tools.</Problem>\n * <Solution>Slides are files; the repo is the deck.</Solution>\n * ```\n */\nexport default function ProblemSolutionLayout({\n  title,\n  className,\n  children,\n  ...props\n}: ProblemSolutionLayoutProps) {\n  return (\n    <main\n      className={cn(\"flex h-full flex-col gap-10 p-24\", className)}\n      data-slot=\"problem-solution-layout\"\n      {...props}\n    >\n      {title ? (\n        <h1 className=\"font-bold text-6xl tracking-tight\">{title}</h1>\n      ) : null}\n      <div\n        className=\"grid flex-1 grid-cols-2 items-stretch gap-10\"\n        data-slot=\"problem-solution-layout-panels\"\n      >\n        {children}\n      </div>\n    </main>\n  );\n}\n",
       "type": "registry:file",
       "target": "layouts/problem-solution.tsx"
     },
     {
       "path": "items/problem.tsx",
-      "content": "import type { ReactNode } from \"react\";\n\nexport default function Problem({ children }: { children: ReactNode }) {\n  return (\n    <section className=\"flex flex-col gap-4 rounded-2xl border-(--color-foreground)/15 border-2 p-10\">\n      <span className=\"font-semibold text-(--color-foreground)/50 text-sm uppercase tracking-[0.2em]\">\n        Problem\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type ProblemProps = ComponentProps<\"section\">;\n\n/** The \"before\" panel of a problem/solution narrative. */\nexport default function Problem({\n  className,\n  children,\n  ...props\n}: ProblemProps) {\n  return (\n    <section\n      className={cn(\n        \"flex flex-col gap-4 rounded-2xl border-(--color-foreground)/15 border-2 p-10\",\n        className\n      )}\n      data-slot=\"problem\"\n      {...props}\n    >\n      <span className=\"font-semibold text-(--color-foreground)/50 text-sm uppercase tracking-[0.2em]\">\n        Problem\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/problem.tsx"
     },
     {
       "path": "items/solution.tsx",
-      "content": "import type { ReactNode } from \"react\";\n\nexport default function Solution({ children }: { children: ReactNode }) {\n  return (\n    <section className=\"flex flex-col gap-4 rounded-2xl border-(--color-primary)/50 border-2 bg-(--color-primary)/5 p-10\">\n      <span className=\"font-semibold text-(--color-primary) text-sm uppercase tracking-[0.2em]\">\n        Solution\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type SolutionProps = ComponentProps<\"section\">;\n\n/** The \"after\" panel of a problem/solution narrative. */\nexport default function Solution({\n  className,\n  children,\n  ...props\n}: SolutionProps) {\n  return (\n    <section\n      className={cn(\n        \"flex flex-col gap-4 rounded-2xl border-(--color-primary)/50 border-2 bg-(--color-primary)/5 p-10\",\n        className\n      )}\n      data-slot=\"solution\"\n      {...props}\n    >\n      <span className=\"font-semibold text-(--color-primary) text-sm uppercase tracking-[0.2em]\">\n        Solution\n      </span>\n      <div className=\"text-2xl leading-relaxed\">{children}</div>\n    </section>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/solution.tsx"
     }

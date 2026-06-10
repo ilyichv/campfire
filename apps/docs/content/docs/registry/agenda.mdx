@@ -1,0 +1,97 @@
+---
+title: Agenda
+description: What the talk covers, as numbered rows.
+---
+
+<ComponentPreview name="agenda">
+
+```mdx title="slides/02-agenda.mdx"
+---
+layout: agenda
+title: Agenda
+---
+
+<AgendaItem number="01" heading="The problem" />
+<AgendaItem number="02" heading="What we built" />
+<AgendaItem number="03" heading="Where it goes next" />
+```
+
+</ComponentPreview>
+
+## Installation
+
+Installs the layout plus the `AgendaItem` row component.
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add agenda
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/agenda.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy both files. They import `cn` from `@/lib/utils` — scaffolded by
+`create-campfire`, or `camp add utils`:
+
+<ComponentSource name="agenda" title="layouts/agenda.tsx" />
+
+<ComponentSource name="agenda-item" title="components/agenda-item.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+`AgendaItem` is an ordinary component — reuse it later in the deck as a
+"where we are" reminder, restyled through `className` or `data-slot` hooks:
+
+```mdx title="slides/02-agenda.mdx"
+---
+layout: agenda
+title: Agenda
+---
+
+<AgendaItem number="01" heading="The problem">
+  Five minutes of pain.
+</AgendaItem>
+<AgendaItem number="02" heading="What we built" />
+```
+
+## API Reference
+
+The layout follows the [layout contract](/docs/layouts) and exposes
+`data-slot="agenda-layout"` and `agenda-layout-items`.
+
+`AgendaItem` extends `ComponentProps<"div">` — native props are forwarded
+and `className` is merged last. Parts expose `data-slot="agenda-item"`,
+`agenda-item-number`, `agenda-item-heading`, and `agenda-item-detail`.
+
+<TypeTable
+  type={{
+    number: {
+      description: 'The item marker, e.g. 1 or "01".',
+      type: "number | string",
+      required: true,
+    },
+    heading: {
+      description: "What this part of the talk covers.",
+      type: "string",
+      required: true,
+    },
+    children: {
+      description: "Optional supporting detail.",
+      type: "ReactNode",
+    },
+  }}
+/>

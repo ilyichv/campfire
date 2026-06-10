@@ -1,0 +1,92 @@
+---
+title: Split
+description: "The two-column workhorse: children flow into equal panels."
+---
+
+<ComponentPreview name="split">
+
+```mdx title="slides/03-two-ways.mdx"
+---
+layout: split
+title: Two ways to tell it
+---
+
+<div>
+  Narrative on the left: why decks belong in git, diffed and
+  reviewed like everything else you ship.
+</div>
+
+<div>
+  <MetricCard value="42%" label="Activation lift" delta="+18%" />
+  <MetricCard value="1,200" label="Teams onboarded" />
+</div>
+```
+
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+
+<Tab value="CLI">
+
+```bash
+camp add split
+```
+
+Or with any shadcn-compatible CLI:
+
+```bash
+bunx shadcn@latest add https://campfire.dev/r/split.json
+```
+
+</Tab>
+
+<Tab value="Manual">
+
+Copy the source into `layouts/split.tsx`. It imports `cn` from
+`@/lib/utils` — scaffolded by `create-campfire`, or `camp add utils`:
+
+<ComponentSource name="split" title="layouts/split.tsx" />
+
+</Tab>
+
+</Tabs>
+
+## Usage
+
+The slide body's top-level children become the columns — two children, two
+equal panels. Text vs. visual, before vs. after, us vs. them:
+
+```mdx title="slides/03-compare.mdx"
+---
+layout: split
+title: Before / After
+---
+
+<Callout>Decks rot in proprietary tools.</Callout>
+
+<Callout tone="primary">The repo is the deck.</Callout>
+```
+
+For the specialized problem/solution narrative, use
+[Problem / Solution](/docs/registry/problem-solution).
+
+## API Reference
+
+Follows the [layout contract](/docs/layouts) and exposes
+`data-slot="split-layout"` and `split-layout-panels`.
+
+<TypeTable
+  type={{
+    title: {
+      description: "From the slide's `title` frontmatter.",
+      type: "string",
+    },
+    children: {
+      description: "The rendered slide body — each child fills one column.",
+      type: "ReactNode",
+      required: true,
+    },
+  }}
+/>
