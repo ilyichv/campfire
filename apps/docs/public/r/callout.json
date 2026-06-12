@@ -3,7 +3,9 @@
   "name": "callout",
   "title": "Callout",
   "description": "An emphasized aside with tone variants.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/callout.tsx",

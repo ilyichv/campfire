@@ -3,7 +3,9 @@
   "name": "split",
   "title": "Split Layout",
   "description": "The two-column workhorse: children flow into equal panels.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/split.tsx",

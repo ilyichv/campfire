@@ -3,7 +3,9 @@
   "name": "closing",
   "title": "Closing Layout",
   "description": "Centered thank-you slide.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/closing.tsx",

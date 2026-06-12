@@ -7,6 +7,7 @@ import {
 } from "node:fs";
 import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CLI_VERSION } from "./version.js";
 
 const TEMPLATES_DIR = fileURLToPath(new URL("../templates", import.meta.url));
 
@@ -49,7 +50,9 @@ function copyTemplate(from: string, to: string, name: string): void {
       continue;
     }
     const filename = DOTFILES.has(entry.name) ? `.${entry.name}` : entry.name;
-    const content = readFileSync(source, "utf8").replaceAll("{{name}}", name);
+    const content = readFileSync(source, "utf8")
+      .replaceAll("{{name}}", name)
+      .replaceAll("{{version}}", CLI_VERSION);
     writeFileSync(join(to, filename), content);
   }
 }

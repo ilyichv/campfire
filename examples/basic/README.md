@@ -1,6 +1,6 @@
 # basic
 
-A [Campfire](https://campfire.dev) presentation.
+A [Campfire](https://campfire-deck.vercel.app) presentation.
 
 ```bash
 bun install

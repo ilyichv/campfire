@@ -2,6 +2,15 @@
   "name": "@campfire/cli",
   "version": "0.0.1",
   "description": "Campfire command line: camp, init, validate, inspect, add, slide mutations",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyichv/campfire.git",
+    "directory": "packages/cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "bin": {
     "camp": "./dist/index.mjs",

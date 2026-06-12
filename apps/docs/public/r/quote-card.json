@@ -3,7 +3,9 @@
   "name": "quote-card",
   "title": "Quote Card",
   "description": "A large quotation with attribution.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/quote-card.tsx",

@@ -2,6 +2,15 @@
   "name": "@campfire/app",
   "version": "0.0.1",
   "description": "Campfire browser shell and local runtime: Vite integration, virtual modules, presentation modes",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyichv/campfire.git",
+    "directory": "packages/app"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -15,8 +24,7 @@
   ],
   "scripts": {
     "build": "tsdown",
-    "check-types": "tsc --noEmit",
-    "test": "bun test"
+    "check-types": "tsc --noEmit"
   },
   "peerDependencies": {
     "playwright-chromium": ">=1.49.0"
