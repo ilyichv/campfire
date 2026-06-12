@@ -179,7 +179,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   closing: (
     <ClosingLayout title="Thanks">
-      bun create campfire my-deck — and tell your story.
+      camp init my-deck — and tell your story.
     </ClosingLayout>
   ),
 };

@@ -7,7 +7,7 @@
 story with React layouts, and present from a live local shell.
 
 ```bash
-bun create campfire my-deck
+bunx @campfire/cli init my-deck
 cd my-deck && bun install
 bun dev          # camp — live shell at http://localhost:3030
 ```
@@ -24,8 +24,7 @@ every surface.
 | ---- | ------- | ---------- |
 | `packages/core` | `@campfire/core` | Project engine: discovery, scanning, validation, diagnostics, slide mutations |
 | `packages/app` | `@campfire/app` | Browser shell + Vite runtime: virtual modules, MDX pipeline, canvas, HMR |
-| `packages/cli` | `@campfire/cli` | `camp` / `campfire` bins: shell, validate, inspect, add, `slide` mutations |
-| `packages/create` | `create-campfire` | `bun create campfire` scaffolder |
+| `packages/cli` | `@campfire/cli` | `camp` / `campfire` bins: shell, init, validate, inspect, add, `slide` mutations |
 | `registry/` | `@campfire/registry` | shadcn-compatible registry items (built into the docs app) |
 | `apps/docs` | `docs` | Fumadocs site: documentation + registry at `/r/<item>.json` |
 | `examples/basic` | — | A Campfire deck built with registry items |

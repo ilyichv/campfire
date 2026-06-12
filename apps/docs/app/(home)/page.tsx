@@ -12,7 +12,7 @@ export default function HomePage() {
         story with React layouts, and present from a live local shell.
       </p>
       <pre className="rounded-lg border bg-fd-secondary px-6 py-3 text-left text-sm">
-        bun create campfire my-deck
+        bunx @campfire/cli init my-deck
       </pre>
       <div className="flex gap-4">
         <Link

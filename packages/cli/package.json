@@ -1,14 +1,15 @@
 {
   "name": "@campfire/cli",
   "version": "0.0.1",
-  "description": "Campfire command line: camp, validate, inspect, add, slide mutations",
+  "description": "Campfire command line: camp, init, validate, inspect, add, slide mutations",
   "type": "module",
   "bin": {
     "camp": "./dist/index.mjs",
     "campfire": "./dist/index.mjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "scripts": {
     "build": "tsdown",

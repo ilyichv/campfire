@@ -12,6 +12,7 @@ import {
   validateProject,
 } from "@campfire/core";
 import { cac } from "cac";
+import { runInit } from "./init.js";
 import { printDiagnostics, printJson, reportMutation } from "./output.js";
 
 const REGISTRY_URL =
@@ -54,6 +55,13 @@ cli
       console.log(`🔥 Campfire burning at ${url}`);
     }
   );
+
+cli
+  .command("init [dir]", "Scaffold a new Campfire presentation")
+  .option("--force", "Scaffold into a non-empty directory")
+  .action((dir: string | undefined, options: { force?: boolean }) => {
+    runInit(dir, options);
+  });
 
 cli
   .command("validate [dir]", "Validate slides, layouts, and components")
