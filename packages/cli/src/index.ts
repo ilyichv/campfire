@@ -64,6 +64,36 @@ cli
   });
 
 cli
+  .command("export [dir]", "Export the deck as a PDF")
+  .option("--out <file>", "Output file (default: <deck-title>.pdf)")
+  .option("--port <port>", "Port for the export server", { default: 3030 })
+  .action(
+    async (
+      dir: string | undefined,
+      options: { out?: string; port: number }
+    ) => {
+      const root = requireRoot(dir);
+      const { exportPdf, PlaywrightMissingError } = await import(
+        "@campfire/app"
+      );
+      try {
+        const out = await exportPdf({
+          root,
+          out: options.out,
+          port: Number(options.port),
+        });
+        console.log(`✓ PDF exported to ${out}`);
+      } catch (error) {
+        if (error instanceof PlaywrightMissingError) {
+          console.error(`✗ ${error.message}`);
+          process.exit(1);
+        }
+        throw error;
+      }
+    }
+  );
+
+cli
   .command("validate [dir]", "Validate slides, layouts, and components")
   .option("--json", "Machine-readable output")
   .action(async (dir: string | undefined, options: { json?: boolean }) => {

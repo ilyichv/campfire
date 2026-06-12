@@ -17,6 +17,24 @@ Starts the live shell: overview, presentation mode, hot reload, diagnostics.
 Works from any subdirectory — the root is discovered by walking up to the
 nearest directory containing `slides/`.
 
+## camp export
+
+```bash
+camp export [dir] [--out deck.pdf]
+```
+
+Exports the deck as a vector PDF — one page per slide at exact canvas size,
+with selectable text. Requires Chromium via the optional
+`playwright-chromium` package:
+
+```bash
+bun add -D playwright-chromium
+```
+
+Under the hood the shell exposes a `#/print` route that renders every slide
+at fixed canvas size with page breaks; opening it in a browser and hitting
+<kbd>Cmd</kbd>+<kbd>P</kbd> produces the same result manually.
+
 ## camp validate
 
 ```bash

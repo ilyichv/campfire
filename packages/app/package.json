@@ -15,7 +15,16 @@
   ],
   "scripts": {
     "build": "tsdown",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "peerDependencies": {
+    "playwright-chromium": ">=1.49.0"
+  },
+  "peerDependenciesMeta": {
+    "playwright-chromium": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@campfire/core": "workspace:*",

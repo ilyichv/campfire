@@ -1,4 +1,5 @@
 node_modules
 .campfire
+dist
 *.local
 .DS_Store

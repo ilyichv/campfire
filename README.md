@@ -16,15 +16,16 @@ Campfire is not a slide builder, a CMS, or an AI generator. It watches a
 presentation repository — slides, layouts, components, theme — and serves a
 live browser shell with hot reload, diagnostics, and a presentation mode.
 Slides render on a fixed logical canvas (1280×720 by default) scaled to fit
-every surface.
+every surface. When the deck is ready to leave the campfire, `camp export` 
+produces a vector PDF.
 
 ## Monorepo
 
 | Path | Package | What it is |
 | ---- | ------- | ---------- |
 | `packages/core` | `@campfire/core` | Project engine: discovery, scanning, validation, diagnostics, slide mutations |
-| `packages/app` | `@campfire/app` | Browser shell + Vite runtime: virtual modules, MDX pipeline, canvas, HMR |
-| `packages/cli` | `@campfire/cli` | `camp` / `campfire` bins: shell, init, validate, inspect, add, `slide` mutations |
+| `packages/app` | `@campfire/app` | Browser shell + Vite runtime: virtual modules, MDX pipeline, canvas, HMR, PDF export |
+| `packages/cli` | `@campfire/cli` | `camp` / `campfire` bins: shell, init, export, validate, inspect, add, `slide` mutations |
 | `registry/` | `@campfire/registry` | shadcn-compatible registry items (built into the docs app) |
 | `apps/docs` | `docs` | Fumadocs site: documentation + registry at `/r/<item>.json` |
 | `examples/basic` | — | A Campfire deck built with registry items |

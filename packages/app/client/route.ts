@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 export type Route =
   | { mode: "overview"; index: number }
-  | { mode: "present"; index: number };
+  | { mode: "present"; index: number }
+  | { mode: "print"; index: number };
 
 const PRESENT_HASH_PATTERN = /^#\/present(?:\/(\d+))?$/;
 const OVERVIEW_HASH_PATTERN = /^#\/(\d+)$/;
@@ -11,6 +12,9 @@ export function parseRoute(hash: string, slideCount: number): Route {
   const present = PRESENT_HASH_PATTERN.exec(hash);
   const clamp = (value: number) =>
     Math.min(Math.max(value, 0), Math.max(slideCount - 1, 0));
+  if (hash === "#/print") {
+    return { mode: "print", index: 0 };
+  }
   if (present) {
     return {
       mode: "present",
@@ -25,9 +29,14 @@ export function parseRoute(hash: string, slideCount: number): Route {
 }
 
 export function routeHash(route: Route): string {
-  return route.mode === "present"
-    ? `#/present/${route.index + 1}`
-    : `#/${route.index + 1}`;
+  switch (route.mode) {
+    case "print":
+      return "#/print";
+    case "present":
+      return `#/present/${route.index + 1}`;
+    default:
+      return `#/${route.index + 1}`;
+  }
 }
 
 export function navigate(route: Route): void {

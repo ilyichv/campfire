@@ -188,6 +188,21 @@ body {
   mix-blend-mode: difference;
 }
 
+/* ---- print ---- */
+
+.cf-print {
+  width: fit-content;
+  background: #fff;
+}
+
+.cf-print-page {
+  position: relative;
+  overflow: hidden;
+  color: var(--color-foreground, #111);
+  background: var(--color-background, #fff);
+  break-after: page;
+}
+
 /* ---- diagnostics ---- */
 
 .cf-diagnostics {

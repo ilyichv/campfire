@@ -7,6 +7,7 @@ Campfire is filesystem-first. Edit files directly and use the CLI to inspect and
 ## Commands
 
 - `camp` starts the live presentation shell.
+- `camp export [--out file.pdf]` exports a PDF (needs `playwright-chromium` installed).
 - `camp validate` validates slides, layouts, and components.
 - `camp inspect --json` prints the project model.
 - `camp add <item>` installs registry primitives or blocks.

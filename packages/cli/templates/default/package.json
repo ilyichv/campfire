@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "camp",
+    "export": "camp export",
     "validate": "camp validate",
     "check-types": "tsc --noEmit"
   },

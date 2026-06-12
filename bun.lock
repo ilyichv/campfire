@@ -77,6 +77,12 @@
         "tsdown": "^0.22.2",
         "typescript": "^6.0.3",
       },
+      "peerDependencies": {
+        "playwright-chromium": ">=1.49.0",
+      },
+      "optionalPeers": [
+        "playwright-chromium",
+      ],
     },
     "packages/cli": {
       "name": "@campfire/cli",

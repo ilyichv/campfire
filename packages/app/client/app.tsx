@@ -3,6 +3,7 @@ import { slides } from "virtual:campfire/slides";
 import { useEffect } from "react";
 import { Overview } from "./overview.js";
 import { Present } from "./present.js";
+import { Print } from "./print.js";
 import { navigate, type Route, useRoute } from "./route.js";
 
 function routeForKey(
@@ -10,6 +11,9 @@ function routeForKey(
   route: Route,
   lastIndex: number
 ): Route | undefined {
+  if (route.mode === "print") {
+    return;
+  }
   const next = { ...route, index: Math.min(route.index + 1, lastIndex) };
   const previous = { ...route, index: Math.max(route.index - 1, 0) };
   const inOverview = route.mode === "overview";
@@ -63,9 +67,14 @@ export function App() {
     );
   }
 
-  return route.mode === "present" ? (
-    <Present index={route.index} />
-  ) : (
-    <Overview diagnostics={manifest.diagnostics} index={route.index} />
-  );
+  switch (route.mode) {
+    case "print":
+      return <Print />;
+    case "present":
+      return <Present index={route.index} />;
+    default:
+      return (
+        <Overview diagnostics={manifest.diagnostics} index={route.index} />
+      );
+  }
 }
