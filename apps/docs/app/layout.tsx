@@ -15,6 +15,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://campfire-deck.vercel.app"),
   title: {
     default: "Campfire — filesystem-native presentations",
     template: "%s | Campfire",

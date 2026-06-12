@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@campfire/registry": "workspace:*",
+    "@takumi-rs/image-response": "^1.8.3",
     "clsx": "^2.1.1",
     "fumadocs-core": "16.9.3",
     "fumadocs-mdx": "15.0.11",

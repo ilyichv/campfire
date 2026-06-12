@@ -6,6 +6,7 @@ const withMDX = createMDX();
 const config = {
   reactStrictMode: true,
   transpilePackages: ["@campfire/registry"],
+  serverExternalPackages: ["@takumi-rs/image-response"],
 };
 
 export default withMDX(config);
