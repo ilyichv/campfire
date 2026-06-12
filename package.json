@@ -9,6 +9,7 @@
     "ultracite": "7.8.2"
   },
   "name": "campfire",
+  "license": "MIT",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
