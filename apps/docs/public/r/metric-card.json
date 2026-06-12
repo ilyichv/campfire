@@ -3,7 +3,9 @@
   "name": "metric-card",
   "title": "Metric Card",
   "description": "A headline number with label and optional delta.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/metric-card.tsx",

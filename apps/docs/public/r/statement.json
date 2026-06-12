@@ -3,7 +3,9 @@
   "name": "statement",
   "title": "Statement Layout",
   "description": "One big takeaway, centered. Also the home for a QuoteCard.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/statement.tsx",

@@ -3,7 +3,9 @@
   "name": "timeline",
   "title": "Timeline",
   "description": "A horizontal sequence of milestones for roadmap slides.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/timeline.tsx",

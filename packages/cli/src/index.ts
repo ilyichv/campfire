@@ -14,9 +14,10 @@ import {
 import { cac } from "cac";
 import { runInit } from "./init.js";
 import { printDiagnostics, printJson, reportMutation } from "./output.js";
+import { CLI_VERSION } from "./version.js";
 
 const REGISTRY_URL =
-  process.env.CAMPFIRE_REGISTRY_URL ?? "https://campfire.dev/r";
+  process.env.CAMPFIRE_REGISTRY_URL ?? "https://campfire-deck.vercel.app/r";
 
 function requireRoot(dir?: string): string {
   const root = discoverRoot(resolve(dir ?? process.cwd()));
@@ -293,9 +294,9 @@ slideCli
   );
 
 cli.help();
-cli.version("0.0.1");
+cli.version(CLI_VERSION);
 slideCli.help();
-slideCli.version("0.0.1");
+slideCli.version(CLI_VERSION);
 
 if (process.argv[2] === "slide") {
   slideCli.parse([...process.argv.slice(0, 2), ...process.argv.slice(3)]);

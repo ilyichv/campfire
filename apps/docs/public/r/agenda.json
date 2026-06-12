@@ -3,7 +3,9 @@
   "name": "agenda",
   "title": "Agenda",
   "description": "What the talk covers: a layout plus the AgendaItem row.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/agenda.tsx",

@@ -3,7 +3,10 @@
   "name": "utils",
   "title": "Utils",
   "description": "The cn class-merging helper (clsx + tailwind-merge) every item builds on.",
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "files": [
     {
       "path": "items/utils.ts",

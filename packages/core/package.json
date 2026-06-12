@@ -2,6 +2,15 @@
   "name": "@campfire/core",
   "version": "0.0.1",
   "description": "Campfire presentation repo engine: discovery, validation, diagnostics, and mutations",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyichv/campfire.git",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {

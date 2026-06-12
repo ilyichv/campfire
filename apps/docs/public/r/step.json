@@ -3,7 +3,9 @@
   "name": "step",
   "title": "Step",
   "description": "A numbered step with heading and detail.",
-  "registryDependencies": ["https://campfire.dev/r/utils.json"],
+  "registryDependencies": [
+    "https://campfire-deck.vercel.app/r/utils.json"
+  ],
   "files": [
     {
       "path": "items/step.tsx",
