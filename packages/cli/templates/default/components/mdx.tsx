@@ -19,6 +19,9 @@ export const mdxComponents = {
   h3: ({ className, ...props }: ComponentProps<"h3">) => (
     <h3 className={cn("font-semibold text-3xl", className)} {...props} />
   ),
+  h4: ({ className, ...props }: ComponentProps<"h4">) => (
+    <h4 className={cn("font-semibold text-2xl", className)} {...props} />
+  ),
   p: ({ className, ...props }: ComponentProps<"p">) => (
     <p className={cn("text-2xl leading-relaxed", className)} {...props} />
   ),
@@ -49,9 +52,57 @@ export const mdxComponents = {
       {...props}
     />
   ),
+  pre: ({ className, ...props }: ComponentProps<"pre">) => (
+    <pre
+      className={cn(
+        "overflow-x-auto rounded-lg bg-black/5 p-6 text-xl leading-relaxed",
+        "[&_code]:bg-transparent [&_code]:p-0",
+        className
+      )}
+      {...props}
+    />
+  ),
   a: ({ className, ...props }: ComponentProps<"a">) => (
     <a
       className={cn("text-(--color-primary) underline", className)}
+      {...props}
+    />
+  ),
+  strong: ({ className, ...props }: ComponentProps<"strong">) => (
+    <strong className={cn("font-semibold", className)} {...props} />
+  ),
+  em: ({ className, ...props }: ComponentProps<"em">) => (
+    <em className={cn("italic", className)} {...props} />
+  ),
+  hr: ({ className, ...props }: ComponentProps<"hr">) => (
+    <hr
+      className={cn("my-8 border-current/15 border-t", className)}
+      {...props}
+    />
+  ),
+  img: ({ className, ...props }: ComponentProps<"img">) => (
+    // biome-ignore lint/a11y/useAltText: alt flows in from the markdown source
+    // biome-ignore lint/correctness/useImageSize: markdown images carry no dimensions
+    <img className={cn("rounded-lg", className)} {...props} />
+  ),
+  table: ({ className, ...props }: ComponentProps<"table">) => (
+    <table
+      className={cn("w-full border-collapse text-left text-2xl", className)}
+      {...props}
+    />
+  ),
+  th: ({ className, ...props }: ComponentProps<"th">) => (
+    <th
+      className={cn(
+        "border-current/20 border-b-2 px-4 py-3 font-semibold",
+        className
+      )}
+      {...props}
+    />
+  ),
+  td: ({ className, ...props }: ComponentProps<"td">) => (
+    <td
+      className={cn("border-current/10 border-b px-4 py-3", className)}
       {...props}
     />
   ),

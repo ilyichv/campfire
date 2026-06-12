@@ -32,12 +32,16 @@ matching the component name also works).
 
 ## Base markdown rendering
 
-`components/mdx.tsx` controls how plain markdown renders in slides — `h1`,
-`p`, `ul`, `blockquote`, `code`, and friends. It is scaffolded by
-`camp init` (restore or adopt it with `camp add mdx`) and it is yours
-to edit:
+Most of a deck isn't components — it's markdown. `components/mdx.tsx` is the
+file that decides how that markdown renders at slide scale. It is not a
+registry item: every deck needs it, so `camp init` scaffolds it and it is
+yours to edit. There is nothing to call — the runtime picks the file up
+automatically and applies it to every slide's markdown.
 
-```tsx
+The file exports a single `mdxComponents` map. Each entry wraps one intrinsic
+element, extends its `ComponentProps`, and merges `className` through `cn`:
+
+```tsx title="components/mdx.tsx"
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
@@ -51,10 +55,35 @@ export const mdxComponents = {
 };
 ```
 
-The full file is documented as the [MDX registry item](/docs/registry/mdx).
+Edit a renderer and the whole deck restyles.
 
-Precedence in the slide component map:
+### What's covered
+
+The scaffolded file styles every markdown element slides commonly use:
+
+| Key | Renders | Slide-scale default |
+| --- | ------- | ------------------- |
+| `h1` – `h4` | headings | bold/semibold, `text-7xl` down to `text-2xl` |
+| `p` | `<p>` | `text-2xl`, relaxed leading |
+| `ul` / `ol` | lists | `text-2xl`, spaced, indented |
+| `blockquote` | `<blockquote>` | left border, italic, muted |
+| `code` | inline code | mono, subtle pill background |
+| `pre` | code blocks | rounded panel, scrolls horizontally |
+| `a` | `<a>` | primary color, underline |
+| `strong` / `em` | emphasis | semibold / italic |
+| `hr` | `<hr>` | thin muted rule |
+| `img` | `<img>` | rounded corners |
+| `table` / `th` / `td` | tables | `text-2xl`, ruled rows |
+
+Add any other intrinsic element by extending the map — the file is yours.
+
+### Precedence
+
+In the slide component map:
 
 ```txt
 components/mdx.tsx  >  discovered components  >  defaults
 ```
+
+That order also means `mdxComponents` can shadow a discovered component by
+name — handy for swapping implementations without touching slides.

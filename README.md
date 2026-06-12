@@ -62,3 +62,42 @@ cd examples/basic
 - Tailwind v4, CSS-first: a single `theme.css`, no `tailwind.config`.
 - Everything builds with rolldown (`tsdown` for packages, Vite 8 for the
   runtime).
+
+## Roadmap
+
+Presenting and distribution are where Campfire grows next. Nothing here is
+promised; it's the order we'd build in.
+
+**Presenting**
+
+- **Presenter view** — current slide, next-slide preview, the `notes`
+  frontmatter, and an elapsed timer in a second window, synced to the
+  audience shell over `BroadcastChannel`.
+- **Incremental reveal** — step through a slide before advancing to the next,
+  giving the runtime counterpart to the `step` registry item.
+- **Slide transitions** — fade/slide between slides via the View Transitions
+  API, since the runtime owns navigation.
+
+**Authoring**
+
+- **`draft` frontmatter** — skip a slide in present and export while keeping
+  it in the repo.
+- **Code highlighting** — Shiki with line-highlight ranges for technical
+  decks.
+- **More mutations** — `camp slide duplicate`, and a `renumber` that closes
+  gaps left by deletions.
+- **Overflow diagnostics** — headless render of each slide against the fixed
+  canvas, reporting clipped content as a `camp validate` diagnostic.
+
+**Export & distribution**
+
+- **More export formats** — `camp export` grows a format argument: static HTML
+  so decks ship as a shareable URL, and per-slide PNG for OG images and README
+  previews (the render step overflow diagnostics need anyway).
+- **Handout PDF** — slide plus notes per page, built on the existing print
+  route.
+
+**Ecosystem**
+
+- **Registry themes** — curated `registry:theme` items showcasing the
+  CSS-first design system.

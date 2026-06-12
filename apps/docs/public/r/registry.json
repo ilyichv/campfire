@@ -18,20 +18,6 @@
       ]
     },
     {
-      "name": "mdx",
-      "type": "registry:component",
-      "title": "MDX",
-      "description": "Base markdown renderers for every slide — the components/mdx.tsx file.",
-      "registryDependencies": ["https://campfire.dev/r/utils.json"],
-      "files": [
-        {
-          "path": "items/mdx.tsx",
-          "type": "registry:file",
-          "target": "components/mdx.tsx"
-        }
-      ]
-    },
-    {
       "name": "metric-card",
       "type": "registry:component",
       "title": "Metric Card",
