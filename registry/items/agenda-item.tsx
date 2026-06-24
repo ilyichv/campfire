@@ -23,14 +23,14 @@ export default function AgendaItem({
       {...props}
     >
       <span
-        className="font-mono font-semibold text-(--color-primary) text-2xl tabular-nums"
+        className="font-mono font-semibold text-2xl text-primary tabular-nums"
         data-slot="agenda-item-number"
       >
         {number}
       </span>
       <div className="flex flex-col gap-1">
         <span
-          className="font-semibold text-4xl tracking-tight"
+          className="font-heading font-semibold text-4xl tracking-tight"
           data-slot="agenda-item-heading"
         >
           {heading}

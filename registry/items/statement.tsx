@@ -23,12 +23,12 @@ export default function StatementLayout({
       {...props}
     >
       {title ? (
-        <span className="font-medium text-(--color-primary) text-xl uppercase tracking-[0.2em]">
+        <span className="font-medium text-primary text-xl uppercase tracking-[0.2em]">
           {title}
         </span>
       ) : null}
       <div
-        className="flex max-w-5xl flex-col items-center gap-8 font-semibold text-6xl leading-tight tracking-tight [&_p]:font-semibold [&_p]:text-6xl [&_p]:leading-tight [&_p]:tracking-tight"
+        className="flex max-w-5xl flex-col items-center gap-8 font-heading font-semibold text-6xl leading-tight tracking-tight [&_p]:font-semibold [&_p]:text-6xl [&_p]:leading-tight [&_p]:tracking-tight"
         data-slot="statement-layout-statement"
       >
         {children}

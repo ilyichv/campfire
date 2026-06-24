@@ -21,7 +21,7 @@ export default function MetricCard({
   return (
     <div
       className={cn(
-        "inline-flex flex-col gap-1 rounded-2xl border border-(--color-foreground)/10 bg-(--color-foreground)/[0.03] px-8 py-6",
+        "inline-flex flex-col gap-1 rounded-2xl border border-foreground/10 bg-foreground/[0.03] px-8 py-6",
         className
       )}
       data-slot="metric-card"
@@ -31,7 +31,7 @@ export default function MetricCard({
         <span className="font-bold text-6xl tracking-tight">{value}</span>
         {delta ? (
           <span
-            className="font-medium text-(--color-primary) text-xl"
+            className="font-medium text-primary text-xl"
             data-slot="metric-card-delta"
           >
             {delta}

@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 export type CalloutTone = "default" | "primary" | "warning";
 
 const toneStyles: Record<CalloutTone, string> = {
-  default: "border-(--color-foreground)/15 bg-(--color-foreground)/[0.04]",
-  primary: "border-(--color-primary)/40 bg-(--color-primary)/10",
+  default: "border-foreground/15 bg-foreground/[0.04]",
+  primary: "border-primary/40 bg-primary/10",
   warning: "border-amber-500/40 bg-amber-500/10",
 };
 

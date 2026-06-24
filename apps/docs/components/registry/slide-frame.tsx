@@ -16,7 +16,7 @@ const SLIDE_THEME = {
   "--color-primary": "oklch(0.55 0.2 260)",
   "--color-muted": "oklch(0.55 0.02 260)",
   "--font-sans": SLIDE_FONT,
-  "--font-display": SLIDE_FONT,
+  "--font-heading": SLIDE_FONT,
 } as React.CSSProperties;
 
 /**
@@ -45,7 +45,7 @@ export function SlideFrame({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className="cf-slide-frame not-prose relative aspect-video w-full overflow-hidden rounded-xl border bg-(--color-background) text-(--color-foreground)"
+      className="cf-slide-frame not-prose relative aspect-video w-full overflow-hidden rounded-xl border bg-background text-foreground"
       ref={containerRef}
       style={SLIDE_THEME}
     >

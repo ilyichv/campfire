@@ -16,7 +16,7 @@ export default function SectionLayout({
   return (
     <main
       className={cn(
-        "flex h-full flex-col justify-center gap-8 bg-(--color-primary) p-28 text-(--color-background)",
+        "flex h-full flex-col justify-center gap-8 bg-primary p-28 text-background",
         className
       )}
       data-slot="section-layout"

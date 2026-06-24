@@ -16,14 +16,14 @@ export default function SectionLayout({
   return (
     <main
       className={cn(
-        "flex h-full flex-col justify-center gap-8 bg-(--color-primary) p-28 text-(--color-background)",
+        "flex h-full flex-col justify-center gap-8 bg-primary p-28 text-background",
         className
       )}
       data-slot="section-layout"
       {...props}
     >
       {title ? (
-        <h1 className="font-bold text-8xl tracking-tight">{title}</h1>
+        <h1 className="font-bold font-heading text-8xl tracking-tight">{title}</h1>
       ) : null}
       <div
         className="max-w-4xl text-3xl leading-relaxed opacity-90"

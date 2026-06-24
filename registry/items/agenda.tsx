@@ -29,7 +29,9 @@ export default function AgendaLayout({
       {...props}
     >
       {title ? (
-        <h1 className="font-bold text-6xl tracking-tight">{title}</h1>
+        <h1 className="font-bold font-heading text-6xl tracking-tight">
+          {title}
+        </h1>
       ) : null}
       <div
         className="flex max-w-4xl flex-col gap-8"

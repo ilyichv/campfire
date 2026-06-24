@@ -25,7 +25,7 @@ export default function QuoteCard({
       {...props}
     >
       <blockquote
-        className="font-medium text-5xl leading-snug tracking-tight"
+        className="font-heading font-medium text-5xl leading-snug tracking-tight"
         data-slot="quote-card-quote"
       >
         “{quote}”

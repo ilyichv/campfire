@@ -167,8 +167,9 @@ body {
   top: 50%;
   left: 50%;
   overflow: hidden;
-  color: var(--color-foreground, #111);
-  background: var(--color-background, #fff);
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  color: var(--foreground, #111);
+  background: var(--background, #fff);
 }
 
 /* ---- present ---- */
@@ -198,8 +199,9 @@ body {
 .cf-print-page {
   position: relative;
   overflow: hidden;
-  color: var(--color-foreground, #111);
-  background: var(--color-background, #fff);
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  color: var(--foreground, #111);
+  background: var(--background, #fff);
   break-after: page;
 }
 
@@ -298,6 +300,7 @@ body {
 
 .cf-default-layout-title {
   margin: 0 0 32px;
+  font-family: var(--font-heading, inherit);
   font-size: 64px;
   font-weight: 700;
   letter-spacing: -0.02em;
