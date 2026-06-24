@@ -6,7 +6,10 @@ import { cn } from "@/lib/utils";
 export const mdxComponents = {
   h1: ({ className, ...props }: ComponentProps<"h1">) => (
     <h1
-      className={cn("font-bold font-heading text-7xl tracking-tight", className)}
+      className={cn(
+        "font-bold font-heading text-7xl tracking-tight",
+        className
+      )}
       {...props}
     />
   ),

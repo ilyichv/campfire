@@ -23,7 +23,9 @@ export default function ClosingLayout({
       {...props}
     >
       {title ? (
-        <h1 className="font-bold font-heading text-8xl tracking-tight">{title}</h1>
+        <h1 className="font-bold font-heading text-8xl tracking-tight">
+          {title}
+        </h1>
       ) : null}
       <div
         className="max-w-3xl text-2xl leading-relaxed opacity-70"
