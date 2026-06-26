@@ -5,7 +5,7 @@ import {
   generateManifest,
   loadProject,
   type PresentationProject,
-} from "@campfire/core";
+} from "@campfire-deck/core";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";

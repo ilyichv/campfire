@@ -7,7 +7,7 @@
 story with React layouts, and present from a live local shell.
 
 ```bash
-bunx @campfire/cli init my-deck
+bunx @campfire-deck/cli init my-deck
 cd my-deck && bun install
 bun dev          # camp — live shell at http://localhost:3030
 ```
@@ -23,10 +23,10 @@ produces a vector PDF.
 
 | Path | Package | What it is |
 | ---- | ------- | ---------- |
-| `packages/core` | `@campfire/core` | Project engine: discovery, scanning, validation, diagnostics, slide mutations |
-| `packages/app` | `@campfire/app` | Browser shell + Vite runtime: virtual modules, MDX pipeline, canvas, HMR, PDF export |
-| `packages/cli` | `@campfire/cli` | `camp` / `campfire` bins: shell, init, export, validate, inspect, add, `slide` mutations |
-| `registry/` | `@campfire/registry` | shadcn-compatible registry items (built into the docs app) |
+| `packages/core` | `@campfire-deck/core` | Project engine: discovery, scanning, validation, diagnostics, slide mutations |
+| `packages/app` | `@campfire-deck/app` | Browser shell + Vite runtime: virtual modules, MDX pipeline, canvas, HMR, PDF export |
+| `packages/cli` | `@campfire-deck/cli` | `camp` / `campfire` bins: shell, init, export, validate, inspect, add, `slide` mutations |
+| `registry/` | `@campfire-deck/registry` | shadcn-compatible registry items (built into the docs app) |
 | `apps/docs` | `docs` | Fumadocs site: documentation + registry at `/r/<item>.json` |
 | `examples/basic` | — | A Campfire deck built with registry items |
 

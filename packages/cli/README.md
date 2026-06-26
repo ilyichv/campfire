@@ -1,4 +1,4 @@
-# @campfire/cli
+# @campfire-deck/cli
 
 The Campfire command line. Campfire is a filesystem-native presentation
 runtime: write slides in MDX, shape the story with React layouts, and present
@@ -7,7 +7,7 @@ from a live local shell.
 ## Usage
 
 ```sh
-bunx @campfire/cli init my-deck
+bunx @campfire-deck/cli init my-deck
 cd my-deck && bun install && bun dev
 ```
 

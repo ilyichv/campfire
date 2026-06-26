@@ -1,4 +1,4 @@
-import type { Diagnostic, Result, SlideMutation } from "@campfire/core";
+import type { Diagnostic, Result, SlideMutation } from "@campfire-deck/core";
 
 export function printJson(value: unknown): void {
   console.log(JSON.stringify(value, null, 2));

@@ -1,5 +1,5 @@
 import { basename, resolve } from "node:path";
-import { loadProject } from "@campfire/core";
+import { loadProject } from "@campfire-deck/core";
 import { startCampfireApp } from "./server.js";
 
 export const PLAYWRIGHT_INSTALL_HINT =

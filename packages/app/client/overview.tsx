@@ -1,6 +1,6 @@
 import manifest from "virtual:campfire/project";
 import { slides } from "virtual:campfire/slides";
-import type { Diagnostic } from "@campfire/core";
+import type { Diagnostic } from "@campfire-deck/core";
 import { navigate } from "./route.js";
 import { SlideCanvas } from "./slide-canvas.js";
 import { SlideView } from "./slide-view.js";

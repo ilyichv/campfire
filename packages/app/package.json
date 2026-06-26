@@ -1,5 +1,5 @@
 {
-  "name": "@campfire/app",
+  "name": "@campfire-deck/app",
   "version": "0.0.1",
   "description": "Campfire browser shell and local runtime: Vite integration, virtual modules, presentation modes",
   "license": "MIT",
@@ -35,7 +35,7 @@
     }
   },
   "dependencies": {
-    "@campfire/core": "workspace:*",
+    "@campfire-deck/core": "workspace:*",
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.3.0",
     "@vitejs/plugin-react": "^6.0.2",
@@ -47,7 +47,7 @@
     "vite": "^8.0.16"
   },
   "devDependencies": {
-    "@campfire/typescript-config": "workspace:*",
+    "@campfire-deck/typescript-config": "workspace:*",
     "@types/node": "^25.9.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",

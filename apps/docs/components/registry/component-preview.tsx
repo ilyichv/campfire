@@ -34,7 +34,7 @@ export function ComponentPreview({
 
 const itemsDir = path.join(
   process.cwd(),
-  "node_modules/@campfire/registry/items"
+  "node_modules/@campfire-deck/registry/items"
 );
 
 /** Highlighted source of a registry item, read from the registry package. */

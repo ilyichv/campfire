@@ -1,5 +1,5 @@
 {
-  "extends": "@campfire/typescript-config/base.json",
+  "extends": "@campfire-deck/typescript-config/base.json",
   "compilerOptions": {
     "types": ["node", "vite/client"],
     "jsx": "react-jsx",

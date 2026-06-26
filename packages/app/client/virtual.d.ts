@@ -1,5 +1,5 @@
 declare module "virtual:campfire/project" {
-  import type { ProjectManifest } from "@campfire/core";
+  import type { ProjectManifest } from "@campfire-deck/core";
 
   const manifest: ProjectManifest;
   export default manifest;

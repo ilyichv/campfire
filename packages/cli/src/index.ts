@@ -10,7 +10,7 @@ import {
   renameSlide,
   updateSlide,
   validateProject,
-} from "@campfire/core";
+} from "@campfire-deck/core";
 import { cac } from "cac";
 import { runInit } from "./init.js";
 import { printDiagnostics, printJson, reportMutation } from "./output.js";
@@ -45,7 +45,7 @@ cli
       options: { port: number; open: boolean }
     ) => {
       const root = requireRoot(dir);
-      const { startCampfireApp } = await import("@campfire/app");
+      const { startCampfireApp } = await import("@campfire-deck/app");
       const server = await startCampfireApp({
         root,
         port: Number(options.port),
@@ -75,7 +75,7 @@ cli
     ) => {
       const root = requireRoot(dir);
       const { exportPdf, PlaywrightMissingError } = await import(
-        "@campfire/app"
+        "@campfire-deck/app"
       );
       try {
         const out = await exportPdf({

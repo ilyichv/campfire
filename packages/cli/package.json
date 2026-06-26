@@ -1,5 +1,5 @@
 {
-  "name": "@campfire/cli",
+  "name": "@campfire-deck/cli",
   "version": "0.0.1",
   "description": "Campfire command line: camp, init, validate, inspect, add, slide mutations",
   "license": "MIT",
@@ -25,12 +25,12 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@campfire/app": "workspace:*",
-    "@campfire/core": "workspace:*",
+    "@campfire-deck/app": "workspace:*",
+    "@campfire-deck/core": "workspace:*",
     "cac": "^7.0.0"
   },
   "devDependencies": {
-    "@campfire/typescript-config": "workspace:*",
+    "@campfire-deck/typescript-config": "workspace:*",
     "@types/node": "^25.9.2",
     "tsdown": "^0.22.2",
     "typescript": "^6.0.3"

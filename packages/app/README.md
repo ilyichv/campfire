@@ -1,8 +1,8 @@
-# @campfire/app
+# @campfire-deck/app
 
 Campfire's browser shell and local runtime: Vite integration, virtual modules,
 presentation modes, and PDF export. This is an internal package consumed by
-[`@campfire/cli`](https://npmjs.com/package/@campfire/cli); install the CLI
+[`@campfire-deck/cli`](https://npmjs.com/package/@campfire-deck/cli); install the CLI
 unless you are embedding the Campfire shell directly.
 
 ## Documentation

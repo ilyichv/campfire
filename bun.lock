@@ -18,7 +18,7 @@
       "name": "docs",
       "version": "0.0.0",
       "dependencies": {
-        "@campfire/registry": "workspace:*",
+        "@campfire-deck/registry": "workspace:*",
         "@takumi-rs/image-response": "^1.8.3",
         "clsx": "^2.1.1",
         "fumadocs-core": "16.9.3",
@@ -51,17 +51,17 @@
         "tailwind-merge": "^3.6.0",
       },
       "devDependencies": {
-        "@campfire/cli": "workspace:*",
+        "@campfire-deck/cli": "workspace:*",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
         "typescript": "^6.0.3",
       },
     },
     "packages/app": {
-      "name": "@campfire/app",
+      "name": "@campfire-deck/app",
       "version": "0.0.1",
       "dependencies": {
-        "@campfire/core": "workspace:*",
+        "@campfire-deck/core": "workspace:*",
         "@mdx-js/rollup": "^3.1.1",
         "@tailwindcss/vite": "^4.3.0",
         "@vitejs/plugin-react": "^6.0.2",
@@ -73,7 +73,7 @@
         "vite": "^8.0.16",
       },
       "devDependencies": {
-        "@campfire/typescript-config": "workspace:*",
+        "@campfire-deck/typescript-config": "workspace:*",
         "@types/node": "^25.9.2",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
@@ -88,33 +88,33 @@
       ],
     },
     "packages/cli": {
-      "name": "@campfire/cli",
+      "name": "@campfire-deck/cli",
       "version": "0.0.1",
       "bin": {
         "camp": "./dist/index.mjs",
         "campfire": "./dist/index.mjs",
       },
       "dependencies": {
-        "@campfire/app": "workspace:*",
-        "@campfire/core": "workspace:*",
+        "@campfire-deck/app": "workspace:*",
+        "@campfire-deck/core": "workspace:*",
         "cac": "^7.0.0",
       },
       "devDependencies": {
-        "@campfire/typescript-config": "workspace:*",
+        "@campfire-deck/typescript-config": "workspace:*",
         "@types/node": "^25.9.2",
         "tsdown": "^0.22.2",
         "typescript": "^6.0.3",
       },
     },
     "packages/core": {
-      "name": "@campfire/core",
+      "name": "@campfire-deck/core",
       "version": "0.0.1",
       "dependencies": {
         "gray-matter": "^4.0.3",
         "zod": "^4.4.3",
       },
       "devDependencies": {
-        "@campfire/typescript-config": "workspace:*",
+        "@campfire-deck/typescript-config": "workspace:*",
         "@types/bun": "^1.3.14",
         "@types/node": "^25.9.2",
         "tsdown": "^0.22.2",
@@ -122,11 +122,11 @@
       },
     },
     "packages/typescript-config": {
-      "name": "@campfire/typescript-config",
+      "name": "@campfire-deck/typescript-config",
       "version": "0.0.0",
     },
     "registry": {
-      "name": "@campfire/registry",
+      "name": "@campfire-deck/registry",
       "version": "0.0.1",
       "devDependencies": {
         "@types/react": "^19.2.16",
@@ -219,15 +219,15 @@
 
     "@biomejs/cli-win32-x64": ["@biomejs/cli-win32-x64@2.4.16", "", { "os": "win32", "cpu": "x64" }, "sha512-Kp85jgoBHa05gix6UIRjfCDiUV3w/8VIdZ247VyyO2gEjaw12WEVhdIjlxp/AMzXxqxQwbxNTDVZ3Mwd2RG5rw=="],
 
-    "@campfire/app": ["@campfire/app@workspace:packages/app"],
+    "@campfire-deck/app": ["@campfire-deck/app@workspace:packages/app"],
 
-    "@campfire/cli": ["@campfire/cli@workspace:packages/cli"],
+    "@campfire-deck/cli": ["@campfire-deck/cli@workspace:packages/cli"],
 
-    "@campfire/core": ["@campfire/core@workspace:packages/core"],
+    "@campfire-deck/core": ["@campfire-deck/core@workspace:packages/core"],
 
-    "@campfire/registry": ["@campfire/registry@workspace:registry"],
+    "@campfire-deck/registry": ["@campfire-deck/registry@workspace:registry"],
 
-    "@campfire/typescript-config": ["@campfire/typescript-config@workspace:packages/typescript-config"],
+    "@campfire-deck/typescript-config": ["@campfire-deck/typescript-config@workspace:packages/typescript-config"],
 
     "@changesets/apply-release-plan": ["@changesets/apply-release-plan@7.1.1", "", { "dependencies": { "@changesets/config": "^3.1.4", "@changesets/get-version-range-type": "^0.4.0", "@changesets/git": "^3.0.4", "@changesets/should-skip-package": "^0.1.2", "@changesets/types": "^6.1.0", "@manypkg/get-packages": "^1.1.3", "detect-indent": "^6.0.0", "fs-extra": "^7.0.1", "lodash.startcase": "^4.4.0", "outdent": "^0.5.0", "prettier": "^2.7.1", "resolve-from": "^5.0.0", "semver": "^7.5.3" } }, "sha512-9qPCm/rLx/xoOFXIHGB229+4GOL76S4MC+7tyOuTsR6+1jYlfFDQORdvwR5hDA6y4FL2BPt3qpbcQIS+dW85LA=="],
 

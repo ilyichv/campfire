@@ -28,7 +28,7 @@ export default function HomePage() {
         <span aria-hidden className="select-none text-fd-primary">
           ${" "}
         </span>
-        bunx @campfire/cli init my-deck
+        bunx @campfire-deck/cli init my-deck
       </pre>
       <div className="cf-rise flex gap-4 [animation-delay:300ms]">
         <Link

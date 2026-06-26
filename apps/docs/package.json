@@ -10,7 +10,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@campfire/registry": "workspace:*",
+    "@campfire-deck/registry": "workspace:*",
     "@takumi-rs/image-response": "^1.8.3",
     "clsx": "^2.1.1",
     "fumadocs-core": "16.9.3",

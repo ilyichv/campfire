@@ -1,5 +1,5 @@
 {
-  "name": "@campfire/core",
+  "name": "@campfire-deck/core",
   "version": "0.0.1",
   "description": "Campfire presentation repo engine: discovery, validation, diagnostics, and mutations",
   "license": "MIT",
@@ -31,7 +31,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@campfire/typescript-config": "workspace:*",
+    "@campfire-deck/typescript-config": "workspace:*",
     "@types/bun": "^1.3.14",
     "@types/node": "^25.9.2",
     "tsdown": "^0.22.2",
