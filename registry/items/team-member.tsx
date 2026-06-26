@@ -52,14 +52,17 @@ export default function TeamMember({
       ) : (
         <span
           aria-hidden
-          className="flex size-28 items-center justify-center rounded-full bg-(--color-primary)/10 font-semibold text-(--color-primary) text-3xl"
+          className="flex size-28 items-center justify-center rounded-full bg-primary/10 font-semibold text-3xl text-primary"
           data-slot="team-member-photo"
         >
           {initials(name)}
         </span>
       )}
       <figcaption className="flex flex-col gap-1">
-        <span className="font-semibold text-2xl" data-slot="team-member-name">
+        <span
+          className="font-heading font-semibold text-2xl"
+          data-slot="team-member-name"
+        >
           {name}
         </span>
         {position ? (

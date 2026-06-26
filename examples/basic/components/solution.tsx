@@ -12,13 +12,13 @@ export default function Solution({
   return (
     <section
       className={cn(
-        "flex flex-col gap-4 rounded-2xl border-(--color-primary)/50 border-2 bg-(--color-primary)/5 p-10",
+        "flex flex-col gap-4 rounded-2xl border-2 border-primary/50 bg-primary/5 p-10",
         className
       )}
       data-slot="solution"
       {...props}
     >
-      <span className="font-semibold text-(--color-primary) text-sm uppercase tracking-[0.2em]">
+      <span className="font-semibold text-primary text-sm uppercase tracking-[0.2em]">
         Solution
       </span>
       <div className="text-2xl leading-relaxed">{children}</div>

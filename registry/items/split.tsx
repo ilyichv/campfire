@@ -20,7 +20,9 @@ export default function SplitLayout({
       {...props}
     >
       {title ? (
-        <h1 className="font-bold text-6xl tracking-tight">{title}</h1>
+        <h1 className="font-bold font-heading text-6xl tracking-tight">
+          {title}
+        </h1>
       ) : null}
       <div
         className="grid flex-1 grid-cols-2 items-center gap-16 text-2xl leading-relaxed"

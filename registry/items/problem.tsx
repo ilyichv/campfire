@@ -12,13 +12,13 @@ export default function Problem({
   return (
     <section
       className={cn(
-        "flex flex-col gap-4 rounded-2xl border-(--color-foreground)/15 border-2 p-10",
+        "flex flex-col gap-4 rounded-2xl border-2 border-foreground/15 p-10",
         className
       )}
       data-slot="problem"
       {...props}
     >
-      <span className="font-semibold text-(--color-foreground)/50 text-sm uppercase tracking-[0.2em]">
+      <span className="font-semibold text-foreground/50 text-sm uppercase tracking-[0.2em]">
         Problem
       </span>
       <div className="text-2xl leading-relaxed">{children}</div>

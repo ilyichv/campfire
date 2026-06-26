@@ -23,13 +23,16 @@ export default function Step({
       {...props}
     >
       <span
-        className="flex size-12 shrink-0 items-center justify-center rounded-full bg-(--color-primary) font-bold text-(--color-background) text-xl"
+        className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-background text-xl"
         data-slot="step-number"
       >
         {number}
       </span>
       <div className="flex flex-col gap-2">
-        <span className="font-semibold text-3xl" data-slot="step-heading">
+        <span
+          className="font-heading font-semibold text-3xl"
+          data-slot="step-heading"
+        >
           {heading}
         </span>
         {children ? (

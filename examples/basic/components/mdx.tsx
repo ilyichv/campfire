@@ -6,21 +6,33 @@ import { cn } from "@/lib/utils";
 export const mdxComponents = {
   h1: ({ className, ...props }: ComponentProps<"h1">) => (
     <h1
-      className={cn("font-bold text-7xl tracking-tight", className)}
+      className={cn(
+        "font-bold font-heading text-7xl tracking-tight",
+        className
+      )}
       {...props}
     />
   ),
   h2: ({ className, ...props }: ComponentProps<"h2">) => (
     <h2
-      className={cn("font-semibold text-5xl tracking-tight", className)}
+      className={cn(
+        "font-heading font-semibold text-5xl tracking-tight",
+        className
+      )}
       {...props}
     />
   ),
   h3: ({ className, ...props }: ComponentProps<"h3">) => (
-    <h3 className={cn("font-semibold text-3xl", className)} {...props} />
+    <h3
+      className={cn("font-heading font-semibold text-3xl", className)}
+      {...props}
+    />
   ),
   h4: ({ className, ...props }: ComponentProps<"h4">) => (
-    <h4 className={cn("font-semibold text-2xl", className)} {...props} />
+    <h4
+      className={cn("font-heading font-semibold text-2xl", className)}
+      {...props}
+    />
   ),
   p: ({ className, ...props }: ComponentProps<"p">) => (
     <p className={cn("text-2xl leading-relaxed", className)} {...props} />
@@ -63,10 +75,7 @@ export const mdxComponents = {
     />
   ),
   a: ({ className, ...props }: ComponentProps<"a">) => (
-    <a
-      className={cn("text-(--color-primary) underline", className)}
-      {...props}
-    />
+    <a className={cn("text-primary underline", className)} {...props} />
   ),
   strong: ({ className, ...props }: ComponentProps<"strong">) => (
     <strong className={cn("font-semibold", className)} {...props} />

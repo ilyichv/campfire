@@ -23,7 +23,9 @@ export default function TitleLayout({
       {...props}
     >
       {title ? (
-        <h1 className="max-w-5xl font-bold text-8xl tracking-tight">{title}</h1>
+        <h1 className="max-w-5xl font-bold font-heading text-8xl tracking-tight">
+          {title}
+        </h1>
       ) : null}
       <div
         className="max-w-4xl text-3xl leading-relaxed opacity-80"

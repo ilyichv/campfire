@@ -24,22 +24,22 @@ export default function TimelineItem({
     >
       <div className="flex w-full items-center gap-3">
         <span
-          className="size-4 shrink-0 rounded-full bg-(--color-primary)"
+          className="size-4 shrink-0 rounded-full bg-primary"
           data-slot="timeline-item-marker"
         />
-        <span className="h-0.5 flex-1 rounded bg-(--color-foreground)/15 group-last:hidden" />
+        <span className="h-0.5 flex-1 rounded bg-foreground/15 group-last:hidden" />
       </div>
       <div className="flex flex-col gap-1 pr-10">
         {period ? (
           <span
-            className="font-medium text-(--color-primary) text-lg uppercase tracking-wide"
+            className="font-medium text-lg text-primary uppercase tracking-wide"
             data-slot="timeline-item-period"
           >
             {period}
           </span>
         ) : null}
         <span
-          className="font-semibold text-2xl tracking-tight"
+          className="font-heading font-semibold text-2xl tracking-tight"
           data-slot="timeline-item-heading"
         >
           {heading}
